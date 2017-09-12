@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Kiệt Hồng - KPI";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Tổng quan</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Kiệt Hồng KPI</a></li>
+            <li class="active">Tổng quan</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!--row -->
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+      
+            <div class="white-box">
+                <a href="#">
+                    <div class="r-icon-stats">
+                        <i class="ti-pencil-alt bg-megna"></i>
+
+                        <div class="bodystate">
+                            <h4><b>399</b></h4> <span class="text-muted">KPI mới</span>
+                        </div>
+
+                    </div>
+                </a>
+    </div>
+        
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="white-box">
+            <a href="#">
+                <div class="r-icon-stats">
+                    <i class="ti-alert bg-danger"></i>
+                    <div class="bodystate">
+                        <h4><b>120</b></h4> <span class="text-muted">Tồn kho lỗi</span>
+                    </div>
+                </div>
+            </a>
+</div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="white-box">
+            <a href="#">
+                <div class="r-icon-stats">
+                    <i class="ti-wallet bg-success"></i>
+                    <div class="bodystate">
+                        <h4><b>10</b></h4><span class="text-muted">Lỗi mới khắc phục</span>
+                    </div>
+                </div>
+            </a>
+</div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="white-box">
+            <a href="#">
+                <div class="r-icon-stats">
+                    <i class="ti-slice bg-megna"></i>
+                    <div class="bodystate">
+                        <h4><b>3</b></h4> <span class="text-muted">KPI chấm mới</span>
+                    </div>
+                </div>
+             </a>
+</div>
+    </div>
+</div>
+<!--/row -->
+
+<!-- /row -->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="white-box">
+            <h3 class="box-title m-b-0"><b>CÁC CHI NHÁNH ĐƯỢC CHẤM KPI TRONG THÁNG 09/2017</b></h3>
+            <p class="text-muted">Tổng hợp điểm KPI chi nhánh</p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Chi nhánh</th>
+                            <th>Quy định TB</th>
+                            <th>Điểm chấm</th>
+                            <th>Tình trạng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Cafe 390 Ngô Quyền</td>
+                            <td>65</td>
+                            <td><span class="label label-success">60</span></td>
+                            <td><span class="label label-danger">Chưa đạt</span> </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Khách sạn Kiệt Hồng</td>
+                            <td>85</td>
+                            <td><span class="label label-success">93</span></td>
+                            <td><span class="label label-info">Xuất sắc</span> </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Kho sữa Rạch Giá</td>
+                            <td>80</td>
+                            <td><span class="label label-success">85</span></td>
+                            <td><span class="label label-success">Tốt</span> </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="white-box">
+            <h3 class="box-title m-b-0"><b>Lịch chấm KPI sắp tới</b></h3>
+            <p class="text-muted">Đây là lịch chấm dự tính, lịch trình có thể thay đổi</p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Chi nhánh</th>
+                            <th>Ngày chấm gần nhất</th>
+                            <th>Chấm lần kế tiếp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Cafe 390 Ngô Quyền</td>
+                            <td>01/09/2017</td>
+                            <td><span class="text-success  text-semibold"> 15/09/2017</span> </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Khách sạn Kiệt Hồng</td>
+                            <td>02/09/2017</td>
+                            <td><span class="text-success  text-semibold">17/09/2017</span> </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Chợ Vĩnh Bảo</td>
+                            <td>28/08/2017 </td>
+                            <td><span class="text-success text-semibold"> 14/09/2017</span> </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
