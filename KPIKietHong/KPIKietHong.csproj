@@ -182,6 +182,7 @@
     <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Content\less\spinners.css" />
     <Content Include="Global.asax" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="plugins\bower_components\Animatedbg\css\component.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\demo.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\normalize.css" />
