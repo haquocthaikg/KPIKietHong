@@ -13,7 +13,7 @@ namespace KPIKietHong.Controllers
         {
             return View();
         }
-        public ActionResult Index2()
+        public ActionResult Index3()
         {
             return View();
         }
