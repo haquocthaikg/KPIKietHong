@@ -1,0 +1,89 @@
+﻿@model IEnumerable<KPIKietHong.Models.Tblchinhanh>
+@{
+    ViewBag.Title = "ChiNhanh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ChiNhanh</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<p>
+    @Html.ActionLink("Create New", "ChiNhanhCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Idchinhanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Machinhanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenchinhanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tragnthaicn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idchinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Machinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenchinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tragnthaicn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ChiNhanhEdit", new {  id=item.Idchinhanh }) |
+            @Html.ActionLink("Details", "ChiNhanhDetails", new {  id=item.Idchinhanh }) |
+            
+            @Html.HiddenFor(x => item.Idchinhanh)
+            
+            <a class="saveButton" href="#" onclick="return false;">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>
+@if (TempData["msg"] != null)
+{
+     @Html.Raw(TempData["msg"])
+}
+<script type="text/javascript">
+
+
+    
+      
+    $('.saveButton').on('click', function () {
+            if (confirm("Are you sure?")) {
+                var tr = $(this).parents('td');
+                var ID = tr.find("input[name='item.Idchinhanh']").val();
+                var UserModel =
+                {
+                    "Idchinhanh": ID
+                    }
+                
+                $.ajax({
+                    url: '/Home/ChiNhanhDelete',
+                    data: JSON.stringify(UserModel),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        alert("Xóa thành công")
+                        window.location.href = window.location.href; 
+                    }
+
+                });
+            }
+           
+        });
+       
+   
+</script>  

@@ -1,0 +1,43 @@
+﻿@model KPIKietHong.Models.Tblchinhanh
+
+@{
+    ViewBag.Title = "ChiNhanhDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ChiNhanhDetails</h2>
+
+<div>
+    <h4>Tblchinhanh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Machinhanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machinhanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenchinhanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenchinhanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tragnthaicn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tragnthaicn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "ChiNhanhEdit", new { id = Model.Idchinhanh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
