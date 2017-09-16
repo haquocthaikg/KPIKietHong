@@ -1,75 +1,104 @@
 ﻿@model IEnumerable<KPIKietHong.Models.Tblchinhanh>
 @{
-    ViewBag.Title = "ChiNhanh";
+    ViewBag.Title = "Chi nhánh - KPI Kiệt Hồng";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ChiNhanh</h2>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<p>
-    @Html.ActionLink("Create New", "ChiNhanhCreate")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Idchinhanh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Machinhanh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tenchinhanh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tragnthaicn)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Idchinhanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Machinhanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tenchinhanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tragnthaicn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "ChiNhanhEdit", new {  id=item.Idchinhanh }) |
-            @Html.ActionLink("Details", "ChiNhanhDetails", new {  id=item.Idchinhanh }) |
-            
-            @Html.HiddenFor(x => item.Idchinhanh)
-            
-            <a class="saveButton" href="#" onclick="return false;">Delete</a>
-        </td>
-    </tr>
-}
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 
-</table>
-@if (TempData["msg"] != null)
-{
-     @Html.Raw(TempData["msg"])
-}
-<script type="text/javascript">
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Chi nhánh </h4>
+    </div>  
+</div>
 
+    <div class="white-box">
+        <div class="button-box">                      
 
-    
-      
-    $('.saveButton').on('click', function () {
-            if (confirm("Bạn Có Chắc Không?")) {
+            <form action="ChiNhanhCreate">               
+                <input type="submit" value="Thêm mới" class="btn btn-success btn-filter"/>
+            </form>
+
+        </div>
+             <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <b> @Html.DisplayNameFor(model => model.Idchinhanh)</b> 
+                        </th>
+                        <th>
+                            <b>  @Html.DisplayNameFor(model => model.Machinhanh)</b>
+                        </th>
+                        <th>
+                            <b>@Html.DisplayNameFor(model => model.Tenchinhanh)</b> 
+                        </th>
+                        <th>
+                            <b>  @Html.DisplayNameFor(model => model.Tragnthaicn)</b>
+                        </th>
+                        <th><em class="fa fa-cog"></em></th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Idchinhanh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Machinhanh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tenchinhanh)
+                        </td>
+                        <td>
+                            @if (@item.Tragnthaicn.ToString() == "True")
+                            {
+                                <span class="label label-success">Hiển thị</span>
+                            }
+                            else
+                            {
+                                <span class="label label-red">Ẩn</span>
+                            }
+
+                            </td>
+                        <td>                        
+                                <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Sửa" href="@Url.Action("ChiNhanhEdit","Home", new { id = item.Idchinhanh }) ">
+                                    <em class="fa fa-pencil"></em>
+                                </a>
+                               
+                            @*<a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Chi tiết" href="@Url.Action("ChiNhanhDetails","Home", new { id = item.Idchinhanh }) ">
+                                <em class="fa fa-file-text-o"></em>
+                            </a>*@
+                               
+
+                                @Html.HiddenFor(x => item.Idchinhanh)
+                                <a class="btn btn-danger saveButton" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="return false;"><em class="fa fa-trash"></em></a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        @Html.Raw(TempData["msg"])
+    }
+    <script type="text/javascript">
+
+        $('.saveButton').on('click', function () {
+            if (confirm("Are you sure?")) {
                 var tr = $(this).parents('td');
                 var ID = tr.find("input[name='item.Idchinhanh']").val();
                 var UserModel =
-                {
-                    "Idchinhanh": ID
+                    {
+                        "Idchinhanh": ID
                     }
-                
+
                 $.ajax({
                     url: '/Home/ChiNhanhDelete',
                     data: JSON.stringify(UserModel),
@@ -77,13 +106,13 @@
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
                         alert("Xóa thành công")
-                        window.location.href = window.location.href; 
+                        window.location.href = window.location.href;
                     }
 
                 });
             }
-           
+
         });
-       
-   
-</script>  
+
+    </script>
+

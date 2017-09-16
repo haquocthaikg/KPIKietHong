@@ -209,6 +209,19 @@
                     </li>
 
                     <li>
+                        <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Các chi nhánh<span class="fa arrow"></span> <span class="label label-rouded label-info pull-right">13</span> </span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li><a href="@Url.Action("ChiNhanhAsync","Home")"><i class="fa fa-plus"> </i> Thêm Chi nhánh</a></li>
+                            @*@Html.ActionLink("Thêm Chi nhánh", "ChiNhanhAsync", "Home")*@
+
+
+                            <li><a href="panel-ui-block.html"><i class="fa fa-plus"> </i> Nhóm tiêu chí</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bar-chart-o"></i> <span class="hide-menu">Hệ thống KPI <span class="fa arrow"></span><span class="label label-rouded label-info pull-right">166</span></span></a>
                         <ul class="nav nav-second-level">
 
@@ -228,22 +241,6 @@
 
                         </ul>
                     </li>
-
-
-                    <li class="nav-small-cap">&nbsp; &nbsp; &nbsp; DANH MỤC QUẢN LÝ</li>
-                    <li>
-                        <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Các chi nhánh<span class="fa arrow"></span> <span class="label label-rouded label-info pull-right">13</span> </span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                               <a href="Home/ChiNhanhAsync" <i class="fa fa-plus-square"></i>Thêm Chi nhánh</a>  @*@Html.ActionLink("Thêm Chi nhánh", "ChiNhanhAsync", "Home")*@
-                                
-                            </li>
-                            <li><a href="panel-ui-block.html"><i class="fa fa-plus"> </i> Nhóm tiêu chí</a></li>
-
-                        </ul>
-                    </li>
-
-
 
                     <li><a href="login.html" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Đăng xuất</span></a></li>
 

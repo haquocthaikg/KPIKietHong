@@ -146,6 +146,7 @@
     <Content Include="Content\css\colors\megna.css" />
     <Content Include="Content\css\colors\purple-dark.css" />
     <Content Include="Content\css\colors\purple.css" />
+    <Content Include="Content\css\custom-develop.css" />
     <Content Include="Content\css\icons\linea-icons\linea.css" />
     <Content Include="Content\css\spinners.css" />
     <Content Include="Content\css\style.css" />
@@ -2801,6 +2802,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
