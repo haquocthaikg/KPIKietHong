@@ -1,0 +1,81 @@
+﻿@model KPIKietHong.Models.Tbltieuchi
+
+@{
+    ViewBag.Title = "Thông Tin Chi Tiết Tiêu Chí";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Tiêu Chí</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dd>
+            @Html.HiddenFor(model => model.Idtieuchi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matieuchi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matieuchi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tentieuchi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tentieuchi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idchinhanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idchinhanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idnhomtieuchi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idnhomtieuchi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trangthaitc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trangthaitc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diemtieuchi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diemtieuchi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idloaitc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idloaitc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "TieuChiEdit", new {id = Model.Idtieuchi }) |
+    @Html.ActionLink("Trở về", "TieuChiAsync")
+</p>

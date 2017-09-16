@@ -1,0 +1,111 @@
+﻿@model IEnumerable<KPIKietHong.Models.Tbltieuchi>
+
+@{
+    ViewBag.Title = "Danh Sách Tiêu Chí";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh Sách Tiêu Chí</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<p>
+    @Html.ActionLink("Khởi Tạo Tiêu Chí", "TieuChiCreate")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Matieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tentieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idchinhanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idnhomtieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trangthaitc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diemtieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idloaitc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Matieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tentieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idchinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idnhomtieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trangthaitc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diemtieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idloaitc)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh Sửa", "TieuChiEdit", new { id=item.Idtieuchi }) |
+            @Html.ActionLink("Chi Tiết", "TieuChiDetails", new { id=item.Idtieuchi }) |
+           
+            @Html.HiddenFor(x => item.Idtieuchi)
+
+            <a class="saveButton" href="#" onclick="return false;">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"])
+}
+<script type="text/javascript">
+
+
+
+
+    $('.saveButton').on('click', function () {
+        if (confirm("Bạn Có Chắc Không?")) {
+            var tr = $(this).parents('td');
+            var ID = tr.find("input[name='item.Idtieuchi']").val();
+            var UserModel =
+                {
+                    "Idtieuchi": ID
+                }
+
+            $.ajax({
+                url: '/TieuChi/TieuChiDelete',
+                data: JSON.stringify(UserModel),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert("Xóa thành công")
+                    window.location.href = window.location.href;
+                }
+
+            });
+        }
+
+    });
+
+
+</script>
+  

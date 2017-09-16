@@ -1,0 +1,122 @@
+﻿@model IEnumerable<KPIKietHong.Models.Tblnhanvien>
+
+@{
+    ViewBag.Title = "Danh Sách Nhân Viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh Sách Nhân Viên</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<p>
+    @Html.ActionLink("Khởi tạo Nhân Viên", "NhanVienCreate")
+</p>
+<table class="table">
+    <tr>
+       @* <th>
+        @Html.DisplayNameFor(model => model.Iduser)
+    </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Tennhanvien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sodienthoai)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Khoa)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Idchinhanh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      @*  <td>
+        @Html.DisplayFor(modelItem => item.Iduser)
+    </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Tennhanvien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sodienthoai)
+        </td>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Khoa)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Idchinhanh)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh Sửa", "NhanVienEdit", new { id=item.Iduser  }) |
+            @Html.ActionLink("Chi Tiết", "NhanVienDetails", new { id=item.Iduser }) |
+           
+            @Html.HiddenFor(x => item.Iduser)
+            <a class="saveButton" href="#" onclick="return false;">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"])
+}
+
+<script type="text/javascript">
+
+
+
+
+    $('.saveButton').on('click', function () {
+            if (confirm("Bạn Có Chắc Không?")) {
+                var tr = $(this).parents('td');
+                var ID = tr.find("input[name='item.Iduser']").val();
+                var UserModel =
+                {
+                    "Iduser": ID
+                    }
+
+                $.ajax({
+                    url: '/NhanVien/NhanVienDelete',
+                    data: JSON.stringify(UserModel),
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        alert("Xóa thành công")
+                        window.location.href = window.location.href;
+                    }
+
+                });
+            }
+
+        });
+
+
+</script>
+
