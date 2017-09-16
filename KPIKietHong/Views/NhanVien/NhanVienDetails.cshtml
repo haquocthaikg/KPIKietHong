@@ -1,0 +1,84 @@
+﻿@model KPIKietHong.Models.Tblnhanvien
+
+@{
+    ViewBag.Title = "Thông Tin Chi Tiết Nhân Viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông Tin Chi Tiết Nhân Viên</h2>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.HiddenFor(model => model.Iduser)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tennhanvien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tennhanvien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sodienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sodienthoai)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Khoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Khoa)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idchinhanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idchinhanh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "NhanVienEdit", new { id = Model.Iduser }) |
+    @Html.ActionLink("Trở Về", "NhanVienAsync")
+</p>

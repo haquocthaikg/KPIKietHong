@@ -2813,6 +2813,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\TieuChiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3747,6 +3749,14 @@
     <Content Include="Views\Home\ChiNhanhEdit.cshtml" />
     <Content Include="Views\Home\ChiNhanhDelete.cshtml" />
     <Content Include="Views\Home\ChiNhanhDetails.cshtml" />
+    <Content Include="Views\NhanVien\NhanVienAsync.cshtml" />
+    <Content Include="Views\NhanVien\NhanVienCreate.cshtml" />
+    <Content Include="Views\NhanVien\NhanVienDetails.cshtml" />
+    <Content Include="Views\NhanVien\NhanVienEdit.cshtml" />
+    <Content Include="Views\TieuChi\TieuChiAsync.cshtml" />
+    <Content Include="Views\TieuChi\TieuChiCreate.cshtml" />
+    <Content Include="Views\TieuChi\TieuChiEdit.cshtml" />
+    <Content Include="Views\TieuChi\TieuChiDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
