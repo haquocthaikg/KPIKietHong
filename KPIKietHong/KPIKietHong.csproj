@@ -2821,7 +2821,6 @@
     <Compile Include="Models\Tblchinhanh.cs" />
     <Compile Include="Models\Tbldanhgia.cs" />
     <Compile Include="Models\Tbldapan.cs" />
-    <Compile Include="Models\Tblloaitieuchi.cs" />
     <Compile Include="Models\Tblnhanvien.cs" />
     <Compile Include="Models\Tblnhomtieuchi.cs" />
     <Compile Include="Models\Tbltieuchi.cs" />

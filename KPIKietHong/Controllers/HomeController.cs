@@ -66,15 +66,7 @@ namespace KPIKietHong.Controllers
                 try
                 {
                     var test = await data.Delete(Idchinhanh,api);
-                    //if (test)
-                    //{
-                    //    TempData["msg"] = "Thêm mới dữ liệu thành công')";
-
-                    //}
-                    //else
-                    //{
-                    //    TempData["msg"] = "Thao tác không thực hiện";
-                    //}
+                 
                     return RedirectToAction("ChiNhanhAsync");
                 }
                 catch (Exception e)
