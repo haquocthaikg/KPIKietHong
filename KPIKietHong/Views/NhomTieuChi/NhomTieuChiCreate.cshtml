@@ -1,0 +1,60 @@
+﻿@model KPIKietHong.Models.Tblnhomtieuchi
+
+@{
+    ViewBag.Title = "NhomTieuChiCreate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Nhóm Tiêu Chí</h4>
+    </div>
+</div>
+<div class="white-box">
+    <h2>Thêm Nhóm Tiêu Chí</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+          
+                  
+            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tennhomtieuchi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tennhomtieuchi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tennhomtieuchi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trangthaintc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Trangthaintc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Trangthaintc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-6 col-md-6">
+
+                </div>
+                <input type="submit" value="Lưu dữ liệu" class="btn btn-info" />
+                <input type="reset" value="Xóa" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+    <div>
+        <i class="fa fa-arrow-left"></i><span> @Html.ActionLink("Quay về Danh Sách Nhóm Tiêu Chí", "NhomTieuChiAsync")</span>
+    </div>
+</div>
+   
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

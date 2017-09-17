@@ -5,22 +5,16 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="row bg-title">
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Nhân viên </h4>
-    </div>
-</div>
+<h2>Danh Mục Nhân Viên</h2>
 
-<div class="white-box">
-    <h2>Thêm nhân viên</h2>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-         
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Khởi Tạo Nhân Viên</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
             <div class="form-group">
@@ -39,17 +33,21 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    
-
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
+        </div>
 
-
+      @* <div class="form-group">
+        @Html.LabelFor(model => model.Tolken, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Tolken, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tolken, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -59,15 +57,37 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Sodienthoai, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Sodienthoai, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Sodienthoai, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sodienthoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sodienthoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sodienthoai, "", new { @class = "text-danger" })
             </div>
+        </div>
 
+     @*   <div class="form-group">
+        @Html.LabelFor(model => model.Secrect, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Secrect, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Secrect, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
+      @*  <div class="form-group">
+        @Html.LabelFor(model => model.Keychung, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Keychung, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Keychung, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    @*    <div class="form-group">
+        @Html.LabelFor(model => model.Keyrieng, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Keyrieng, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Keyrieng, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Khoa, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -77,6 +97,13 @@
                 </div>
             </div>
 
+    @*    <div class="form-group">
+        @Html.LabelFor(model => model.Giatrixacthuc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Giatrixacthuc, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Giatrixacthuc, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Idchinhanh, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -86,24 +113,17 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="form-group">
-                    <div class="col-md-offset-6 col-md-6">
-
-                    </div>
-                    <input type="submit" value="Lưu dữ liệu" class="btn btn-info" />
-                    <input type="reset" value="Xóa" class="btn btn-default" />
-                </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo Mới" class="btn btn-default" />
             </div>
         </div>
-    }
+    </div>
+}
 
-    <div>
-       
-        @Html.ActionLink("Trở Về", "NhanVienAsync")
-    </div>
-    </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Content/js/validator.js"></script>
+<div>
+    @Html.ActionLink("Trở Về", "NhanVienAsync")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
