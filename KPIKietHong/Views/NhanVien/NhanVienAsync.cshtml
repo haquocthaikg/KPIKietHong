@@ -4,87 +4,118 @@
     ViewBag.Title = "Danh Sách Nhân Viên";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 
-<h2>Danh Sách Nhân Viên</h2>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<p>
-    @Html.ActionLink("Khởi tạo Nhân Viên", "NhanVienCreate")
-</p>
-<table class="table">
-    <tr>
-       @* <th>
-        @Html.DisplayNameFor(model => model.Iduser)
-    </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Tennhanvien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sodienthoai)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Khoa)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Idchinhanh)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-      @*  <td>
-        @Html.DisplayFor(modelItem => item.Iduser)
-    </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Tennhanvien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sodienthoai)
-        </td>
 
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Khoa)
-        </td>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Danh Sách Nhân Viên </h4>
+    </div>
+</div>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Idchinhanh)
-        </td>
-        <td>
-            @Html.ActionLink("Chỉnh Sửa", "NhanVienEdit", new { id=item.Iduser  }) |
-            @Html.ActionLink("Chi Tiết", "NhanVienDetails", new { id=item.Iduser }) |
-           
-            @Html.HiddenFor(x => item.Iduser)
-            <a class="saveButton" href="#" onclick="return false;">Xóa</a>
-        </td>
-    </tr>
-}
 
-</table>
+
+<div class="white-box">
+    <div class="button-box">
+
+        <form action="NhanVienCreate">
+            <input type="submit" value="Thêm mới" class="btn btn-success btn-filter" />
+        </form>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    @* <th>
+                            @Html.DisplayNameFor(model => model.Iduser)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tennhanvien)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sodienthoai)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Khoa)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Idchinhanh)
+                    </th>
+                    <th><em class="fa fa-cog"></em></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*  <td>
+                            @Html.DisplayFor(modelItem => item.Iduser)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tennhanvien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sodienthoai)
+                    </td>
+
+
+                    <td>
+                        @if (@item.Khoa.ToString() == "True")
+                        {
+                            <span class="label label-success">Đang Sử Dụng</span>
+                        }
+                        else
+                        {
+                            <span class="label label-red">Đã Khóa</span>
+                        }
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Idchinhanh)
+                    </td>
+                    <td>
+                        <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Sửa" href="@Url.Action("NhanVienEdit","NhanVien", new { id = item.Iduser }) ">
+                            <em class="fa fa-pencil"></em>
+                        </a>
+
+                        <a class="btn btn-danger saveButton" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="return false;"><em class="fa fa-trash"></em></a>
+                       
+
+                        @Html.HiddenFor(x => item.Iduser)
+                 
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
 @if (TempData["msg"] != null)
-{
+            {
     @Html.Raw(TempData["msg"])
 }
 
@@ -94,28 +125,28 @@
 
 
     $('.saveButton').on('click', function () {
-            if (confirm("Bạn Có Chắc Không?")) {
-                var tr = $(this).parents('td');
-                var ID = tr.find("input[name='item.Iduser']").val();
-                var UserModel =
+        if (confirm("Bạn Có Chắc Không?")) {
+            var tr = $(this).parents('td');
+            var ID = tr.find("input[name='item.Iduser']").val();
+            var UserModel =
                 {
                     "Iduser": ID
-                    }
+                }
 
-                $.ajax({
-                    url: '/NhanVien/NhanVienDelete',
-                    data: JSON.stringify(UserModel),
-                    type: 'POST',
-                    contentType: 'application/json; charset=utf-8',
-                    success: function (data) {
-                        alert("Xóa thành công")
-                        window.location.href = window.location.href;
-                    }
+            $.ajax({
+                url: '/NhanVien/NhanVienDelete',
+                data: JSON.stringify(UserModel),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert("Xóa thành công")
+                    window.location.href = window.location.href;
+                }
 
-                });
-            }
+            });
+        }
 
-        });
+    });
 
 
 </script>

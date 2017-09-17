@@ -10,6 +10,6 @@ namespace KPIKietHong.Models
         public string Tenloaitc { get; set; }
         public bool? Trangthaitc { get; set; }
 
-      
+   
     }
 }

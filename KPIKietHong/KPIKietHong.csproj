@@ -2814,6 +2814,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\NhomTieuChiController.cs" />
     <Compile Include="Controllers\TieuChiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3758,6 +3759,9 @@
     <Content Include="Views\TieuChi\TieuChiCreate.cshtml" />
     <Content Include="Views\TieuChi\TieuChiEdit.cshtml" />
     <Content Include="Views\TieuChi\TieuChiDetails.cshtml" />
+    <Content Include="Views\NhomTieuChi\NhomTieuChiAsync.cshtml" />
+    <Content Include="Views\NhomTieuChi\NhomTieuChiCreate.cshtml" />
+    <Content Include="Views\NhomTieuChi\NhomTieuChiEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
