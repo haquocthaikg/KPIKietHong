@@ -19,6 +19,7 @@ namespace KPIKietHong.Models
         public string Tenchinhanh { get; set; }
         [Required(ErrorMessage ="Vui lòng chọn trạng thái")]
         [Display(Name = "Trạng thái")]
+       
         public bool? Tragnthaicn { get; set; }
 
       

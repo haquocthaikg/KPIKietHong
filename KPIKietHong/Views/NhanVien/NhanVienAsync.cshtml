@@ -1,105 +1,130 @@
 ﻿@model IEnumerable<KPIKietHong.Models.Tblnhanvien>
 
 @{
-    ViewBag.Title = "Danh Sách Nhân Viên";
+    ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Danh Sách Nhân Viên</h2>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<p>
-    @Html.ActionLink("Khởi tạo Nhân Viên", "NhanVienCreate")
-</p>
-<table class="table">
-    <tr>
-       @* <th>
-        @Html.DisplayNameFor(model => model.Iduser)
-    </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Tennhanvien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sodienthoai)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Khoa)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Idchinhanh)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-      @*  <td>
-        @Html.DisplayFor(modelItem => item.Iduser)
-    </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Tennhanvien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sodienthoai)
-        </td>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Khoa)
-        </td>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Nhân viên</h4>
+    </div>
+</div>
+<div class="white-box">
+    <div class="button-box">
+        <form action="NhanVienCreate">
+            <input type="submit" value="Thêm mới" class="btn btn-info btn-filter" />
+        </form>
+    </div>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Idchinhanh)
-        </td>
-        <td>
-            @Html.ActionLink("Chỉnh Sửa", "NhanVienEdit", new { id=item.Iduser  }) |
-            @Html.ActionLink("Chi Tiết", "NhanVienDetails", new { id=item.Iduser }) |
-           
-            @Html.HiddenFor(x => item.Iduser)
-            <a class="saveButton" href="#" onclick="return false;">Xóa</a>
-        </td>
-    </tr>
-}
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
 
-</table>
-@if (TempData["msg"] != null)
-{
-    @Html.Raw(TempData["msg"])
-}
+            <tr>
+                @* <th>
+                        @Html.DisplayNameFor(model => model.Iduser)
+                    </th>*@
+                <th>
+                    <b>   @Html.DisplayNameFor(model => model.Tennhanvien)</b>
+                </th>
+                <th>
+                    <b>   @Html.DisplayNameFor(model => model.Username)</b>
+                </th>
+                <th>
+                    <b>   @Html.DisplayNameFor(model => model.Password)</b>
+                </th>
 
-<script type="text/javascript">
+                <th>
+                    <b>   @Html.DisplayNameFor(model => model.Email)</b>
+                </th>
+                <th>
+                    <b>  @Html.DisplayNameFor(model => model.Sodienthoai)</b>
+                </th>
+
+                <th>
+                    <b>  @Html.DisplayNameFor(model => model.Khoa)</b> 
+                </th>
+
+                <th>
+                    <b>  @Html.DisplayNameFor(model => model.Idchinhanh)</b>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*  <td>
+                            @Html.DisplayFor(modelItem => item.Iduser)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tennhanvien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sodienthoai)
+                    </td>
 
 
+                    <td>
+                        @if (@item.Khoa.ToString() == "True")
+                        {
+                            <span class="label label-success">Hiển thị</span>
+                        }
+                        else
+                        {
+                            <span class="label label-red">Ẩn</span>
+                        }
+                    </td>
 
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Idchinhanh)*@
+                       
+                        @Html.DropDownListFor(m=> item.Idchinhanh,new SelectList(ViewBag.ChiNhanhList1, "Idchinhanh", "Tenchinhanh",item.Idchinhanh),new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
+                    </td>
+                    <td class="text-nowrap">
+                       
+                        @Html.HiddenFor(x => item.Iduser)
+                       
+                        <a class="btn btn-info" href="@Url.Action("NhanVienEdit","NhanVien", new { id = item.Iduser })" data-toggle="tooltip" data-original-title="Sửa"> <em class="fa fa-pencil"></em> </a>
+                        <a href="#" data-toggle="tooltip" data-original-title="Xóa" class="btn btn-danger saveButton" onclick="return false;"><em class="fa fa-trash"></em> </a>
 
-    $('.saveButton').on('click', function () {
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+   
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        @Html.Raw(TempData["msg"])
+    }
+
+    <script type="text/javascript">
+
+        $('.saveButton').on('click', function () {
             if (confirm("Bạn Có Chắc Không?")) {
                 var tr = $(this).parents('td');
                 var ID = tr.find("input[name='item.Iduser']").val();
                 var UserModel =
-                {
-                    "Iduser": ID
+                    {
+                        "Iduser": ID
                     }
 
                 $.ajax({
@@ -116,7 +141,7 @@
             }
 
         });
+      
 
-
-</script>
+    </script>
 
