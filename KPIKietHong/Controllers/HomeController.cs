@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+//using PagedList;
 
 namespace KPIKietHong.Controllers
 {
@@ -22,6 +23,8 @@ namespace KPIKietHong.Controllers
         // GET: Home
         public ActionResult Index()
         {
+          
+            
             return View();
         }
        
@@ -29,9 +32,12 @@ namespace KPIKietHong.Controllers
         public async Task<ActionResult> ChiNhanhAsync()
         {
             var a =await data.GetList(api);
-           // listchinhanh = await GetListChiNhanh();
+
+            // int pageSize = 8;
+            //  int pageNumber = (page ?? 1);
+            //return View(a.OrderBy(x=>x.Idchinhanh).ToPagedList(pageNumber, pageSize));
             return View(a);
-        }//
+        }
         
         public async Task<ActionResult> ChiNhanhDetails(int id)
         {

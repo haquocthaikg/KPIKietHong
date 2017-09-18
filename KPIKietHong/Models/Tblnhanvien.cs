@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace KPIKietHong.Models
 {
     public class Tblnhanvien
@@ -17,10 +18,21 @@ namespace KPIKietHong.Models
         public string Username { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Chưa nhập mật khẩu")]
         [Display(Name = "Mật khẩu")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [DataType(DataType.Password)]
+
+        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng")]
+
+        [Display(Name = "Nhập lại mật khẩu")]
+
+        public string PasswordConfirm { get; set; }
+
+
         public string Tolken { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập Email")]
         [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Sai định dạng Email")]
         public string Email { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập điện thoại")]
         [Display(Name = "Điện thoại")]

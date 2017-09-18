@@ -1301,6 +1301,7 @@ fieldset[disabled] .checkbox label {
 select.input-sm {
   height: 30px;
   line-height: 30px;
+  margin-bottom:10px;
 }
 textarea.input-sm,
 select[multiple].input-sm {

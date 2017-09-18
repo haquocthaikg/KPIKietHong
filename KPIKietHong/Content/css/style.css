@@ -3657,8 +3657,8 @@ table.focus-on tbody tr.focused td {
   padding-left: 0;
 }
 .has-success .form-control {
-  border-color: #00c292;
-  box-shadow: none !important;
+    border-color: #03A9F3;
+    box-shadow: none !important;
 }
 .has-warning .form-control {
   border-color: #fec107;
@@ -15136,7 +15136,7 @@ table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
   border-bottom: 1px solid #fec107;
 }
 .has-success .form-control {
-  border-bottom: 1px solid #00c292;
+    border-bottom: 1px solid #03A9F3;
 }
 .floating-labels .form-control:focus {
   outline: none;
