@@ -14,7 +14,7 @@ namespace KPIKietHong.Models
     {
         private readonly string UrlApi = ConfigurationManager.ConnectionStrings["ApiConnection"].ToString();
         //private readonly SessionUser user;
-        public async Task<bool> GetList(string username,string pass)
+        public async Task<bool> LoginApi(string username,string pass)
         {
 
             using (var client = new HttpClient())
@@ -23,7 +23,7 @@ namespace KPIKietHong.Models
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("token", "loginkpikiethong");
-                HttpResponseMessage response = await client.GetAsync($"Login/{username}/{pass}");
+                HttpResponseMessage response = await client.GetAsync($"values/Login/{username}/{pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     try {

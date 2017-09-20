@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    if (Session["userid"] == null)
+    {
+        Response.Redirect("~/DanhGia/Login");
+    }
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>

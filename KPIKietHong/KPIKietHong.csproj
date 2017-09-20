@@ -50,9 +50,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
-      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -66,18 +63,9 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Json, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Json.4.4.0\lib\netstandard2.0\System.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -120,7 +108,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="client\teamplate\SendMailForgetPass.html" />
     <Content Include="Content\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="Content\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -206,6 +193,12 @@
     <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Content\less\spinners.css" />
     <Content Include="Global.asax" />
+    <Content Include="Login\css\font-awesome.css" />
+    <Content Include="Login\css\style.css" />
+    <Content Include="Login\fonts\fontawesome-webfont.svg" />
+    <Content Include="Login\images\bann.jpg" />
+    <Content Include="Login\index.html" />
+    <Content Include="Login\w3layouts-License.txt" />
     <Content Include="plugins\bower_components\Animatedbg\css\component.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\demo.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\normalize.css" />
@@ -2818,6 +2811,11 @@
     <Content Include="Content\js\waves.js" />
     <Content Include="Content\js\widget.js" />
     <Content Include="Scripts\custom-develop.js" />
+    <Content Include="Login\fonts\fontawesome-webfont.eot" />
+    <Content Include="Login\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Login\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -2835,6 +2833,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -2844,19 +2843,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
-    <Compile Include="MailHelper.cs" />
-    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
-    <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\HeThong.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\SessionUser.cs" />
     <Compile Include="Models\Tblchinhanh.cs" />
+    <Compile Include="Models\Tblcontroller.cs" />
     <Compile Include="Models\Tbldanhgia.cs" />
     <Compile Include="Models\Tbldapan.cs" />
     <Compile Include="Models\Tblloaitieuchi.cs" />
     <Compile Include="Models\Tblnhanvien.cs" />
     <Compile Include="Models\Tblnhomtieuchi.cs" />
+    <Compile Include="Models\Tblquanlychinhanh.cs" />
+    <Compile Include="Models\Tblquyencontroller.cs" />
+    <Compile Include="Models\Tblquyenuser.cs" />
     <Compile Include="Models\Tbltieuchi.cs" />
     <Compile Include="Models\Tbltonkholoi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -3787,13 +3788,14 @@
     <Content Include="Views\TieuChi\TieuChiAsync.cshtml" />
     <Content Include="Views\TieuChi\TieuChiCreate.cshtml" />
     <Content Include="Views\TieuChi\TieuChiEdit.cshtml" />
+    <Content Include="Views\TieuChi\TieuChiDetails.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiAsync.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiCreate.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiEdit.cshtml" />
-    <Content Include="Views\Home\NhanV.cshtml" />
-    <Content Include="Views\Home\TonKhoLoiPartial.cshtml" />
-    <Content Include="Views\Home\LoiDaXuPartial.cshtml" />
-    <Content Include="Views\Home\ChiNhanhPartial.cshtml" />
+    <Content Include="Views\DanhGia\DanhGiaAsync.cshtml" />
+    <Content Include="Views\DanhGia\DanhGiaCreate.cshtml" />
+    <Content Include="Views\DanhGia\Login.cshtml" />
+    <Content Include="Views\DanhGia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

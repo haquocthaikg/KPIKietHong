@@ -1,0 +1,83 @@
+﻿@*@model IEnumerable<KPIKietHong.Models.Tbldanhgia>*@
+
+@{
+    ViewBag.Title = "DanhGiaAsync";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DanhGiaAsync</h2>
+
+<p>
+    @Html.ActionLink("Create New", "DanhGiaCreate")
+   @Html.Raw(ViewBag.user)
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Iddanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idtieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iddapan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diemdanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaydanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iduser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Noidungdanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trangthaidanhgia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iddanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idtieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iddapan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diemdanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaydanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iduser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ghichu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Noidungdanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trangthaidanhgia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>*@
