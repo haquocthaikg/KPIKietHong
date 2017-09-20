@@ -9,7 +9,7 @@
 
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Chi nhánh </h4>
+        <h4 class="page-title">Tiêu chí </h4>
     </div>
 </div>
 <div class="white-box">
@@ -18,72 +18,90 @@
             <input type="submit" value="Thêm mới" class="btn btn-info btn-filter" />
         </form>
     </div>
-   
-    <table class="table" id="editable-datatable">
-        <tr>
-            <th></th>
-            <th>
-                @Html.DisplayNameFor(model => model.Matieuchi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tentieuchi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Idchinhanh)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Idnhomtieuchi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Trangthaitc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diemtieuchi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Idloaitc)
-            </th>
-            <th></th>
-        </tr>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="editable-datatable">
+            <thead>
+                <tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td></td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Matieuchi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tentieuchi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Idchinhanh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Idnhomtieuchi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Trangthaitc)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Diemtieuchi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Idloaitc)
-                </td>
-                <td>
-                    @Html.ActionLink("Chỉnh Sửa", "TieuChiEdit", new { id = item.Idtieuchi }) |
-                    @Html.ActionLink("Chi Tiết", "TieuChiDetails", new { id = item.Idtieuchi }) |
+                    <th><b>STT</b></th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Matieuchi)
+                    </th>*@
+                    <th>
+                        <b> @Html.DisplayNameFor(model => model.Tentieuchi)</b>
+                    </th>
+                    <th>
+                        <b>  @Html.DisplayNameFor(model => model.Idchinhanh)</b>
+                    </th>
+                    <th>
+                        <b> @Html.DisplayNameFor(model => model.Idnhomtieuchi)</b>
+                    </th>
+                    <th>
+                        <b>  @Html.DisplayNameFor(model => model.Trangthaitc)</b>
+                    </th>
+                    <th>
+                        <b> @Html.DisplayNameFor(model => model.Diemtieuchi)</b>
+                    </th>
+                    <th>
+                        <b> @Html.DisplayNameFor(model => model.Idloaitc)</b> 
+                    </th>
+                    <th><i class="fa fa-cog"></i></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Matieuchi)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tentieuchi)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => item.Idchinhanh, new SelectList(ViewBag.ChiNhanhList1, "idchinhanh", "tenchinhanh", item.Idchinhanh), new { @class = "btn btn-secondary btn-sm dropdown-toggle", disabled = "disabled" })
 
-                    @Html.HiddenFor(x => item.Idtieuchi)
 
-                    <a class="saveButton" href="#" onclick="return false;">Xóa</a>
-                </td>
-            </tr>
-        }
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => item.Idnhomtieuchi, new SelectList(ViewBag.NhomTieuChi2, "idnhomtieuchi", "tennhomtieuchi", item.Idnhomtieuchi), new { @class = "btn btn-secondary btn-sm dropdown-toggle", disabled = "disabled" })
 
-    </table>
+
+                    </td>
+                    <td>
+                        @if (@item.Trangthaitc.ToString() == "True")
+                        {
+                            <span class="label label-info">Hiển thị</span>
+                        }
+                        else
+                        {
+                            <span class="label label-red">Ẩn</span>
+                        }
+                      
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diemtieuchi)
+                    </td>
+                    <td>
+                       @Html.DropDownListFor(m => item.Idloaitc, new SelectList(ViewBag.LoaiTieuChi3, "idloaitc", "tenloaitc", item.Idloaitc), new { @class = "btn btn-secondary btn-sm dropdown-toggle", disabled = "disabled" })
+
+                    </td>
+                    <td>
+
+                        <a class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Sửa" href="@Url.Action("TieuChiEdit","TieuChi", new { id = item.Idtieuchi }) ">
+                            <em class="fa fa-pencil"></em>
+                        </a>
+
+                        @Html.HiddenFor(x => item.Idtieuchi)
+                        <a class="btn btn-danger saveButton" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="return false;"><em class="fa fa-trash"></em></a>
+                 </td>
+                </tr>
+            }
+
+        </table>
     </div>
+</div>
+
     @if (TempData["msg"] != null)
     {
         @Html.Raw(TempData["msg"])
@@ -119,4 +137,6 @@
 
 
     </script>
+
+
 

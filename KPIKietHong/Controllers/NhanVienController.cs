@@ -38,7 +38,7 @@ namespace KPIKietHong.Controllers
         {
             var a = await data.GetList(api);
             var chinhanh = await data1.GetList(api1);
-            ViewBag.ChiNhanhList1 =chinhanh;
+            ViewBag.ChiNhanhList1 = chinhanh;
             // listchinhanh = await GetListChiNhanh();
             return View(a);
         }//

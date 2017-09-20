@@ -24,11 +24,11 @@
                 <a href="#">
                     <div class="r-icon-stats">
                         <i class="ti-pencil-alt bg-megna"></i>
-
+                 
                         <div class="bodystate">
-                            <h4><b>399</b></h4> <span class="text-muted">KPI mới</span>
+                            <h4><b>@ViewBag.Count</b></h4> <span class="text-muted">KPI mới</span>
                         </div>
-
+                     
                     </div>
                 </a>
     </div>
@@ -40,7 +40,11 @@
                 <div class="r-icon-stats">
                     <i class="ti-alert bg-danger"></i>
                     <div class="bodystate">
-                        <h4><b>120</b></h4> <span class="text-muted">Tồn kho lỗi</span>
+                        <h4><b>@Html.Action("TonKhoLoiPartial")</b></h4> 
+                       
+                      
+                        <span class="text-muted">Tồn kho lỗi</span>
+                        @*@Html.Partial("NhanV");*@
                     </div>
                 </div>
             </a>
@@ -52,7 +56,7 @@
                 <div class="r-icon-stats">
                     <i class="ti-wallet bg-success"></i>
                     <div class="bodystate">
-                        <h4><b>10</b></h4><span class="text-muted">Lỗi mới khắc phục</span>
+                        <h4><b>@Html.Action("LoiDaXuPartial")</b></h4><span class="text-muted">Lỗi đã xử lý</span>
                     </div>
                 </div>
             </a>

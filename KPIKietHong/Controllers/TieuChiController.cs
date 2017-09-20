@@ -42,9 +42,19 @@ namespace KPIKietHong.Controllers
         public async Task<ActionResult> TieuChiAsync()
         {
             var a = await data.GetList(api);
-            // listchinhanh = await GetListChiNhanh();
+
+            //Lấy danh sách chi nhánh
+            var chinhanhlst = await data1.GetList(api1);
+            ViewBag.ChiNhanhList1 = chinhanhlst;
+            // Lấy danh sách nhóm tiêu chí
+            var nhomtc = await data2.GetList(api2);
+            ViewBag.NhomTieuChi2 = nhomtc;
+
+            var loaitc = await data3.GetList(api3);
+            ViewBag.LoaiTieuChi3 = loaitc;
+
             return View(a);
-        }//
+        }
 
         public async Task<ActionResult>TieuChiDetails(int id)
         {
@@ -56,11 +66,11 @@ namespace KPIKietHong.Controllers
         public async Task<ActionResult> TieuChiCreate()
         {
             var c = await data3.GetList(api3);
-            ViewBag.LoaiTieuChiList = new SelectList(c, "idloaitc", "tenloaitc");
+            ViewBag.LoaiTieuChiList = new SelectList(c.Where(x=>x.Trangthaitc==true), "idloaitc", "tenloaitc");
             var b = await data2.GetList(api2);
-            ViewBag.NhomTieuChiList = new SelectList(b, "idnhomtieuchi", "tennhomtieuchi");
+            ViewBag.NhomTieuChiList = new SelectList(b.Where(x=>x.Trangthaintc == true), "idnhomtieuchi", "tennhomtieuchi");
             var a = await data1.GetList(api1);
-            ViewBag.ChiNhanhList = new SelectList(a, "idchinhanh", "tenchinhanh");
+            ViewBag.ChiNhanhList = new SelectList(a.Where(x=>x.Tragnthaicn == true), "idchinhanh", "tenchinhanh");
             //listchinhanh = await GetListChiNhanh();
             return View();
         }

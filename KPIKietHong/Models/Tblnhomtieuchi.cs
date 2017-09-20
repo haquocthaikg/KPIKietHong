@@ -8,13 +8,13 @@ namespace KPIKietHong.Models
     {
 
         [Key]
-        [Display(Name = "ID Nhóm Tiêu Chí")]
+        [Display(Name = "ID")]
         public int Idnhomtieuchi { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập Tên Nhóm Tiêu Chí")]
-        [Display(Name = "Tên Nhóm Tiêu Chí")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập tên nhóm tiêu chí")]
+        [Display(Name = "Tên nhóm tiêu chí")]
         public string Tennhomtieuchi { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa Chọn Trạng Thái")]
-        [Display(Name = "Trạng Thái")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa chọn trạng thái")]
+        [Display(Name = "Trạng thái")]
         public bool? Trangthaintc { get; set; }
 
        

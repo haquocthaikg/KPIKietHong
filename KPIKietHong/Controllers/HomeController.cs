@@ -1,4 +1,5 @@
-﻿using KPIKietHong.Models;
+﻿using KPI.Models;
+using KPIKietHong.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 //using PagedList;
 
 namespace KPIKietHong.Controllers
@@ -14,18 +16,57 @@ namespace KPIKietHong.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext<Tblchinhanh> data;
+        private readonly DataContext<Tblnhomtieuchi> datanhomtieuchi;
+        private readonly DataContext<Tbltieuchi> datatieuchi;
         private readonly string api;
+        public static int tonloi = 0;
+        public static int loidaxuly = 0;
+        public static int sochinhanh = 0;
         public HomeController()
         {
-            data =new DataContext <Tblchinhanh>();
+           
+
+            System.Web.HttpContext.Current.Session["userid"] = new SessionUser() { Iduser = 1, Email = @"abc@gmail.com", Idchinhanh = 1, Isadmin = false, Sodienthoai = "0123456789", Tennhanvien = "Cao Huong", Tolken = "12345", Username = "caohuong" };
+            data = new DataContext<Tblchinhanh>();        
+            datanhomtieuchi = new DataContext<Tblnhomtieuchi>();
+            datatieuchi = new DataContext<Tbltieuchi>();
             api = "values";
+          //  api = "values/DanhGia";
+          //  api = "values/NhomTieuchi";
+          //  api = "values/tieuChi";
+           // api = "values/chinhanh";
+           // api = "values/NhanVien";
+
+
+
         }
         // GET: Home
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-          
+            DataContext<Tbltieuchi> dtt = new DataContext<Tbltieuchi>();
+            string apik = "values/TieuChi";
+            var a = await dtt.GetList(apik);
+            ViewBag.Count = a.Count();
+            DataContext<Tbltonkholoi> tkl = new DataContext<Tbltonkholoi>();
+            string apik1 = "values/TonKhoLoi";
+            var b = await tkl.GetList(apik1);
+            tonloi = b.Where(x => x.Daxuly == false).Count();
+            loidaxuly = b.Where(x => x.Daxuly == true).Count();
+
+            DataContext<Tbltieuchi> dtt2 = new DataContext<Tbltieuchi>();
+            string apik2 = "values/NhanVien";
+            var c = await dtt2.GetList(apik2);
+            ViewBag.nhanvien = c.Count();
+            //Đếm chi nhánh
             
+            
+            var d = await data.GetList(api);
+            ViewBag.sochinhanh = d.Count();
+
+
             return View();
+
+           
         }
        
         static IEnumerable<Tblchinhanh> listchinhanh = null;
@@ -129,6 +170,32 @@ namespace KPIKietHong.Controllers
             var list = await data.GetList(api);
             return View(list);
         }
-    
+      
+        //Thống kê
+        public ActionResult NhanV()
+        {          
+            return PartialView("NhanV");
+        }
+
+        //Tồn kho lỗi
+
+        public ActionResult TonKhoLoiPartial()
+        {           
+            return PartialView("TonKhoLoiPartial",tonloi);
+        }
+
+        public ActionResult LoiDaXuPartial()
+        {
+            return PartialView("LoiDaXuPartial", loidaxuly);
+        }
+        public ActionResult ChiNhanhPartial()
+        {
+            return PartialView("ChiNhanhPartial", sochinhanh);
+        }
+
+
+
+
     }
+ 
 }

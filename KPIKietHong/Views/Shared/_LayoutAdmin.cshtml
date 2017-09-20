@@ -177,7 +177,7 @@
                         <!-- /input-group -->
                     </li>
                     <li class="user-pro">
-                        <a href="#" class="waves-effect">
+                        <a href="#">
                             @*<img src="../plugins/images/users/d1.jpg" alt="user-img" class="img-circle">*@ <span class="hide-menu">Tôn Xuân Long<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -187,58 +187,24 @@
                             <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Đăng xuất</a></li>
                         </ul>
                     </li>
-                    <li class="nav-small-cap m-t-10"> &nbsp; &nbsp; &nbsp;Danh mục chính</li>
-                    <li> <a href="@Url.Action("Index","Home")" class="waves-effect"><i class="ti-dashboard p-r-10"></i> <span class="hide-menu">Tổng quan</span></a> </li>
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-envelope p-r-10"></i> <span class="hide-menu"> Hộp thư <span class="fa arrow"></span><span class="label label-rouded label-danger pull-right">6</span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="compose.html"><i class="fa fa-file-text-o"></i> Soạn mail</a></li>
-                            <li> <a href="inbox.html"><i class="icon-envelope-open"></i> Hộp thư đến</a></li>
+                    <li class="nav-small-cap"> &nbsp; &nbsp; &nbsp;Danh mục chính</li>
+                    <li> <a href="@Url.Action("Index","Home")"><i class="ti-dashboard"></i> <span class="hide-menu">Tổng quan</span></a> </li>
+                    <li> <a href="@Url.Action("ChiNhanhAsync","Home")"><i class="fa fa-th-list"></i> <span class="hide-menu">Chi nhánh</span></a></li>
+                    <li> <a href="@Url.Action("NhanVienAsync","NhanVien")"><i class="fa fa-users"></i> <span class="hide-menu">Nhân viên</span></a></li>
 
-                        </ul>
+                    <li class="nav-small-cap m-t-10">&nbsp; &nbsp; &nbsp; Phân hệ KPI</li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i> <span class="hide-menu"> Loại tiêu chí</span></a>
+                        <a href="@Url.Action("NhomTieuChiAsync","NhomTieuChi")"><i class="fa fa-reorder"></i> <span class="hide-menu"> Nhóm tiêu chí</span></a>
+                        <a href="@Url.Action("TieuChiAsync","TieuChi")"><i class="fa  fa-th-large"></i> <span class="hide-menu"> Tiêu chí</span></a>
                     </li>
-                    <li class="nav-small-cap m-t-10">&nbsp; &nbsp; &nbsp; KPI Quản lý</li>
-
+                 
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-md p-r-10"></i> <span class="hide-menu"> Nhân viên <span class="fa arrow"></span></span></a>
+                        <a href="javascript:void(0);"> <span class="hide-menu"> BÁO CÁO <span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li> <a href="doctors.html"><i class="fa fa-file-text-o"></i> Tất cả nhân viên</a> </li>
-                            <li> <a href="add-doctor.html"><i class="fa fa-plus"></i> Thêm nhân viên</a> </li>
-                            <li> <a href="edit-doctor.html"><i class="fa  fa-edit"></i> Sửa nhân viên</a> </li>
-                           
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Các chi nhánh<span class="fa arrow"></span> <span class="label label-rouded label-info pull-right">13</span> </span></a>
-                        <ul class="nav nav-second-level">
-
-                            <li><a href="@Url.Action("ChiNhanhAsync","Home")"><i class="fa fa-plus"> </i> Thêm Chi nhánh</a></li>
-                            @*@Html.ActionLink("Thêm Chi nhánh", "ChiNhanhAsync", "Home")*@
-
-
-                            <li><a href="panel-ui-block.html"><i class="fa fa-plus"> </i> Nhóm tiêu chí</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-bar-chart-o"></i> <span class="hide-menu">Hệ thống KPI <span class="fa arrow"></span><span class="label label-rouded label-info pull-right">166</span></span></a>
-                        <ul class="nav nav-second-level">
-
-                            <li> <a href="add-doctor.html"><i class="fa fa-plus-square"></i> Thêm KPI</a> </li>
-                            <li> <a href="edit-doctor.html"><i class="fa fa-pencil-square-o"></i> Sửa KPI</a> </li>
-
-                        </ul>
-                    </li>
-
-                    <li> <a href="a.html" class="waves-effect"><i class="fa fa-check-square-o"></i> <span class="hide-menu">Chấm điểm KPI cho các chi nhánh</span></a> </li>
-
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect"><i class="icon-chart p-r-10"></i> <span class="hide-menu"> BÁO CÁO <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="payment-report.html"><i class="ti-printer"></i> Báo cáo kiểm tra KPI</a></li>
-                            <li> <a href="income-report.html"><i class="ti-view-list-alt"></i> Báo cáo tồn kho lỗi</a></li>
+                            <li> <a href="#"><i class="fa fa-th"></i> Báo cáo kiểm tra KPI</a></li>
+                            <li> <a href="#"><i class="fa fa-exclamation-circle"></i> Báo cáo tồn kho lỗi</a></li>
 
                         </ul>
                     </li>
@@ -341,9 +307,6 @@
    
     <script src="~/plugins/bower_components/tiny-editable/numeric-input-example.js"></script>
     <script src="~/Scripts/custom-develop.js"></script>
-
-   
-
 
     <!--Style Switcher -->
     <script src="~/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>

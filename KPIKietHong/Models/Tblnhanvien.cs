@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace KPIKietHong.Models
 {
@@ -20,19 +20,20 @@ namespace KPIKietHong.Models
         [Display(Name = "Mật khẩu")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [DataType(DataType.Password)]
+        // [DataType(DataType.Password)]
 
-        [Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng")]
+        //[Compare("Password", ErrorMessage = "Mật khẩu nhập lại không trùng")]
 
-        [Display(Name = "Nhập lại mật khẩu")]
+        //[Display(Name = "Nhập lại mật khẩu")]
 
-        public string PasswordConfirm { get; set; }
+        //public string PasswordConfirm { get; set; }
 
 
         public string Tolken { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập Email")]
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Sai định dạng Email")]
+        [Remote("CheckEmail","Login", ErrorMessage = "Email đã có")]
         public string Email { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bạn chưa nhập điện thoại")]
         [Display(Name = "Điện thoại")]
