@@ -193,6 +193,12 @@
     <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Content\less\spinners.css" />
     <Content Include="Global.asax" />
+    <Content Include="Login\css\font-awesome.css" />
+    <Content Include="Login\css\style.css" />
+    <Content Include="Login\fonts\fontawesome-webfont.svg" />
+    <Content Include="Login\images\bann.jpg" />
+    <Content Include="Login\index.html" />
+    <Content Include="Login\w3layouts-License.txt" />
     <Content Include="plugins\bower_components\Animatedbg\css\component.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\demo.css" />
     <Content Include="plugins\bower_components\Animatedbg\css\normalize.css" />
@@ -2805,6 +2811,11 @@
     <Content Include="Content\js\waves.js" />
     <Content Include="Content\js\widget.js" />
     <Content Include="Scripts\custom-develop.js" />
+    <Content Include="Login\fonts\fontawesome-webfont.eot" />
+    <Content Include="Login\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff" />
+    <Content Include="Login\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Login\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -2822,6 +2833,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -2831,13 +2843,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
+    <Compile Include="Interface\IHeThong.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\HeThong.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\SessionUser.cs" />
     <Compile Include="Models\Tblchinhanh.cs" />
+    <Compile Include="Models\Tblcontroller.cs" />
     <Compile Include="Models\Tbldanhgia.cs" />
     <Compile Include="Models\Tbldapan.cs" />
     <Compile Include="Models\Tblloaitieuchi.cs" />
     <Compile Include="Models\Tblnhanvien.cs" />
     <Compile Include="Models\Tblnhomtieuchi.cs" />
+    <Compile Include="Models\Tblquanlychinhanh.cs" />
+    <Compile Include="Models\Tblquyencontroller.cs" />
+    <Compile Include="Models\Tblquyenuser.cs" />
     <Compile Include="Models\Tbltieuchi.cs" />
     <Compile Include="Models\Tbltonkholoi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -3772,6 +3792,10 @@
     <Content Include="Views\NhomTieuChi\NhomTieuChiAsync.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiCreate.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiEdit.cshtml" />
+    <Content Include="Views\DanhGia\DanhGiaAsync.cshtml" />
+    <Content Include="Views\DanhGia\DanhGiaCreate.cshtml" />
+    <Content Include="Views\DanhGia\Login.cshtml" />
+    <Content Include="Views\DanhGia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
