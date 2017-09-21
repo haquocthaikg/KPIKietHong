@@ -69,5 +69,7 @@ namespace KPIKietHong.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        //Check kiểm tra Email
+
     }
 }
