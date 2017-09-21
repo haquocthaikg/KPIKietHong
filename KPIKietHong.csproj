@@ -2848,6 +2848,7 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
+    <Compile Include="Models\CheckEmail.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\HeThong.cs" />
     <Compile Include="Models\Login.cs" />
