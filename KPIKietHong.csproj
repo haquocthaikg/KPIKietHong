@@ -3804,6 +3804,9 @@
     <Content Include="Views\DanhGia\Login__.cshtml" />
     <Content Include="Views\DanhGia\Index.cshtml" />
     <Content Include="Views\DanhGia\Login.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiCreate.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiEdit.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiAsync.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3815,7 +3818,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="plugins\bower_components\etc\" />
     <Folder Include="plugins\bower_components\footable\old\" />
-    <Folder Include="Views\LoaiTieuChi\" />
     <Folder Include="Views\SendMail\" />
   </ItemGroup>
   <PropertyGroup>

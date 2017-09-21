@@ -13,13 +13,21 @@ namespace KPIKietHong.Controllers
 {
     public class LoaiTieuChiController : Controller
     {
+        private readonly DataContext<Tblloaitieuchi> data;
+        private readonly string api;
+        public LoaiTieuChiController()
+        {
+            data = new DataContext<Tblloaitieuchi>();
+            api = "values/LoaiTieuChi";
+        }
         // GET: LoaiTieuChi
         public ActionResult Index()
         {
             return View();
         }
 
-        public async Task<ActionResult> LoaiTieuChiAsnys()
+        static IEnumerable<Tblloaitieuchi> listLoaiTieuChi = null;
+        public async Task<ActionResult> LoaiTieuChiAsync()
         {
             if (Session["userid"] == null)
             {
@@ -27,22 +35,21 @@ namespace KPIKietHong.Controllers
             }
             else
             {
-                DataContext<Tblloaitieuchi> data = new DataContext<Tblloaitieuchi>();
-                string api = "values/LoaiTieuChi";
                 var a = await data.GetList(api);
+                // listchinhanh = await GetListChiNhanh();
                 return View(a);
             }
             return View();
-        }
-        public ActionResult LoaiTieuChi()
+        }//
+
+        public ActionResult LoaiTieuChiCreate()
         {
-            //listLoaiTieuChi = await GetListLoaiTieuChi();
+            //listchinhanh = await GetListChiNhanh();
             return View();
         }
+
         public async Task<ActionResult> LoaiTieuChiEdit(int id)
         {
-            DataContext<Tblloaitieuchi> data = new DataContext<Tblloaitieuchi>();
-            string api = "values/LoaiTieuChi";
             var item = await data.GetList(id, api);
             if (item != null)
             {
@@ -53,18 +60,26 @@ namespace KPIKietHong.Controllers
                 return View();
             }
         }
+
         [HttpPost]
         public async Task<ActionResult> LoaiTieuChiDelete([Bind(Include = "Idloaitc")]System.Int32? Idloaitc)
         {
-            DataContext<Tblloaitieuchi> data = new DataContext<Tblloaitieuchi>();
-            string api = "values/LoaiTieuChi";
+
             var model = Idloaitc;
             if (Idloaitc != null)
             {
                 try
                 {
                     var test = await data.Delete(Idloaitc, api);
+                    //if (test)
+                    //{
+                    //    TempData["msg"] = "Thêm mới dữ liệu thành công')";
 
+                    //}
+                    //else
+                    //{
+                    //    TempData["msg"] = "Thao tác không thực hiện";
+                    //}
                     return RedirectToAction("LoaiTieuChiAsync");
                 }
                 catch (Exception e)
@@ -73,19 +88,18 @@ namespace KPIKietHong.Controllers
                 }
             }
 
-           var listLoaiTieuChi = await data.GetList(api);
+            listLoaiTieuChi = await data.GetList(api);
             return View(listLoaiTieuChi);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LoaiTieuChiCreate([Bind(Include = "Tenloaitc,Trangthaitc")]Tblloaitieuchi item)
         {
-            DataContext<Tblloaitieuchi> data = new DataContext<Tblloaitieuchi>();
-            string api = "values/LoaiTieuChi";
             if (ModelState.IsValid)
             {
-                var value = new Tblloaitieuchi() {Tenloaitc = item.Tenloaitc, Trangthaitc = item.Trangthaitc};
+                var value = new Tblloaitieuchi() { Tenloaitc = item.Tenloaitc, Trangthaitc = item.Trangthaitc };
                 var test = await data.Create(value, api);
                 if (test)
                 {
@@ -98,15 +112,14 @@ namespace KPIKietHong.Controllers
                 }
                 return RedirectToAction("LoaiTieuChiAsync");
             }
-          var  listLoaiTieuChi = await data.GetList(api);
+            listLoaiTieuChi = await data.GetList(api);
             return View(listLoaiTieuChi);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> LoaiTieuChiEdit(int id, [Bind(Include = "Idloaitc,Tenloaitc,Trangthaitc")]Tblloaitieuchi item)
         {
-            DataContext<Tblloaitieuchi> data = new DataContext<Tblloaitieuchi>();
-            string api = "values/LoaiTieuChi";
             if (ModelState.IsValid)
             {
                 var test = await data.Update(id, item, api);

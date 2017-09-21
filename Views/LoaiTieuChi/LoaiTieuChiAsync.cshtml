@@ -1,0 +1,100 @@
+﻿@model IEnumerable<KPIKietHong.Models.Tblloaitieuchi>
+
+@{
+    ViewBag.Title = "LoaiTieuChiAsync";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Loại tiêu chí</h4>
+    </div>
+</div>
+<div class="white-box">
+    <div class="button-box">
+        <form action="LoaiTieuChiCreate">
+            <input type="submit" value="Thêm mới" class="btn btn-info btn-filter" />
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="editable-datatable">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tenloaitc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Trangthaitc)
+                    </th>
+                    <th></th>
+                </tr>
+             </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tenloaitc)
+                        </td>
+                        <td>
+                            @if (@item.Trangthaitc.ToString() == "True")
+                            {
+                                <span class="label label-info">Hiển thị</span>
+                            }
+                            else
+                            {
+                                <span class="label label-red">Ẩn</span>
+                            }
+                        </td>
+                        <td>
+                        
+                            @Html.HiddenFor(x => item.Idloaitc)
+                            <a class="btn btn-info" href="@Url.Action("LoaiTieuChiEdit","LoaiTieuChi", new { id = item.Idloaitc })" data-toggle="tooltip" data-original-title="Sửa"> <em class="fa fa-pencil"></em> </a>
+                            <a href="#" data-toggle="tooltip" data-original-title="Xóa" class="btn btn-danger saveButton" onclick="return false;"><em class="fa fa-trash"></em> </a>
+
+                        </td>
+                    </tr>
+                }
+
+        </table>
+        </div>
+    </div>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"])
+}
+<script type="text/javascript">
+
+    $('.saveButton').on('click', function () {
+        if (confirm("Bạn muốn xóa?")) {
+            var tr = $(this).parents('td');
+            var ID = tr.find("input[name='item.Idloaitc']").val();
+            var UserModel =
+                {
+                    "Idloaitc": ID
+                }
+
+            $.ajax({
+                url: '/LoaiTieuChi/LoaiTieuChiDelete',
+                data: JSON.stringify(UserModel),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert("Xóa thành công")
+                    window.location.href = window.location.href;
+                }
+
+            });
+        }
+
+    });
+
+
+</script>
+
+
