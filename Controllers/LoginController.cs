@@ -1,7 +1,10 @@
 ﻿using KPIKietHong.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -15,7 +18,7 @@ namespace KPIKietHong.Controllers
         {
             return View();
         }
-
+        private readonly string UrlApi = ConfigurationManager.ConnectionStrings["ApiConnection"].ToString();
         public ActionResult login()
         {
             return View();
@@ -57,9 +60,9 @@ namespace KPIKietHong.Controllers
         public async Task<JsonResult> CheckEmailForgetPass(string Email)
         {
             bool result = false;
-            DataContext<Tblnhanvien> dataNhanVien = new DataContext<Tblnhanvien>();
+           
             string apinv = "values/NhanVien";
-            var a = await dataNhanVien.GetList(apinv);
+            var a = await GetList(apinv);
             var email = a.Where(x => x.Email == Email).FirstOrDefault();
 
             if (email != null)
@@ -69,7 +72,24 @@ namespace KPIKietHong.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        //Check kiểm tra Email
+        public async Task<IEnumerable<Tblnhanvien>> GetList(string api)
+        {
+            IEnumerable<Tblnhanvien> product = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(UrlApi);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", "getallnhanvien");
+                HttpResponseMessage response = await client.GetAsync(api);
+                if (response.IsSuccessStatusCode)
+                {
+                    product = response.Content.ReadAsAsync<IEnumerable<Tblnhanvien>>().Result;
+                }
+            }
+            return product;
+        }
+
 
     }
 }

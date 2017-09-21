@@ -64,7 +64,7 @@ namespace KPIKietHong.Controllers
                 //return View(a.OrderBy(x=>x.Idchinhanh).ToPagedList(pageNumber, pageSize));
                 return View(a);
             }
-            return View();
+           return View();
         }
         
         public async Task<ActionResult> ChiNhanhDetails(int id)

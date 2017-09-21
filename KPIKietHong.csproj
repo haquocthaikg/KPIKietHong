@@ -2836,6 +2836,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoaiTieuChiController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhomTieuChiController.cs" />
@@ -2848,6 +2849,7 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
+    <Compile Include="Models\CheckEmailForgetPass.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\HeThong.cs" />
     <Compile Include="Models\Login.cs" />
@@ -3813,6 +3815,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="plugins\bower_components\etc\" />
     <Folder Include="plugins\bower_components\footable\old\" />
+    <Folder Include="Views\LoaiTieuChi\" />
     <Folder Include="Views\SendMail\" />
   </ItemGroup>
   <PropertyGroup>
