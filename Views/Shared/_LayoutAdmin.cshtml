@@ -158,11 +158,10 @@
                     </li>
                     <!-- /.dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs">@if (Session["userid"] != null) { @Session["TenNV"].ToString()}</b> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><i class="fa fa-user"></i> @*<img src="~/plugins/images/User-Default.jpg" alt="user-img" width="36" class="img-circle">*@<b class="hidden-xs">@if (Session["userid"] != null) { @Session["TenNV"].ToString()}</b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i>  Hồ sơ của bạn</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-email"></i>  Hộp thư đến</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i>  Cài đặt tài khoản</a></li>
+                           
+                            <li><a href="@Url.Action("Index","ChangePass")"><i class="ti-settings"></i> Đổi mật khẩu</a></li>
                             <li><a href="login.html"><i class="fa fa-power-off"></i>  Đăng xuất</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -190,13 +189,12 @@
                     </li>
                     <li class="user-pro">
                         <a href="#">
-                            @*<img src="../plugins/images/users/d1.jpg" alt="user-img" class="img-circle">*@ <span class="hide-menu">@if (Session["userid"] != null)
+                            @*<img src="../plugins/images/users/d1.jpg" alt="user-img" class="img-circle">*@ <i class="fa fa-user"></i> &nbsp; <span class="hide-menu">@if (Session["userid"] != null)
                             { @Session["TenNV"].ToString()}<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i> Hồ sơ của bạn</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-email"></i> Hộp thư đến</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Tài khoản của bạn</a></li>
+                          
+                            <li><a href="@Url.Action("Index","ChangePass")"><i class="ti-settings"></i> Đổi mật khẩu</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Đăng xuất</a></li>
                         </ul>
                     </li>

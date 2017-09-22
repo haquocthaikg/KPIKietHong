@@ -50,6 +50,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.1.0.0-rc2-final\lib\net451\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -2795,6 +2798,7 @@
     <Content Include="plugins\images\tooltip\tooltip1.svg" />
     <Content Include="plugins\images\tooltip\tooltip2.svg" />
     <Content Include="plugins\images\tooltip\tooltip3.svg" />
+    <Content Include="plugins\images\User-Default.jpg" />
     <Content Include="plugins\images\users\1.jpg" />
     <Content Include="plugins\images\users\2.jpg" />
     <Content Include="plugins\images\users\3.jpg" />
@@ -2866,15 +2870,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChangePassController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiTieuChiController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhomTieuChiController.cs" />
+    <Compile Include="Controllers\ProfileUserController.cs" />
     <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Controllers\SuccesfulController.cs" />
     <Compile Include="Controllers\TieuChiController.cs" />
+    <Compile Include="ExtendCode\Hashing.cs" />
     <Compile Include="ExtendCode\MailHelper.cs" />
     <Compile Include="ExtendCode\MD5En.cs" />
     <Compile Include="Global.asax.cs">
@@ -2882,6 +2889,7 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
+    <Compile Include="Models\ChangePass.cs" />
     <Compile Include="Models\CheckEmailForgetPass.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\HeThong.cs" />
@@ -3841,6 +3849,7 @@
     <Content Include="Views\LoaiTieuChi\LoaiTieuChiEdit.cshtml" />
     <Content Include="Views\LoaiTieuChi\LoaiTieuChiAsync.cshtml" />
     <Content Include="Views\Succesful\Index.cshtml" />
+    <Content Include="Views\ChangePass\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3852,6 +3861,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="plugins\bower_components\etc\" />
     <Folder Include="plugins\bower_components\footable\old\" />
+    <Folder Include="Views\ProfileUser\" />
     <Folder Include="Views\SendMail\" />
   </ItemGroup>
   <PropertyGroup>

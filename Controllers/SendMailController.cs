@@ -93,7 +93,7 @@ namespace KPIKietHong.Controllers
             catch
             {
 
-                return Redirect("/loi");
+                return Redirect("/error/index.html");
             }
             //return Redirect("/thanh-cong");
         }
