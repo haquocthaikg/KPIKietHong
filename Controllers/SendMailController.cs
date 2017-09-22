@@ -81,11 +81,11 @@ namespace KPIKietHong.Controllers
                     //content = content.Replace("{{UserName}}", user.Username);
                     content = content.Replace("{{Code}}", maKhauMoi);
                     MailHelper.SendMail(gmail, "Thông tin đổi mật khẩu", content);
-                    return Redirect("/DanhGia/DanhGiaAsync");
+                    return Redirect("/Succesful/Index");
                 }
                 else
                 {
-                    return Redirect("/loi");
+                    return Redirect("/error/index.html");
                 }
             
              

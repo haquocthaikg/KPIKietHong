@@ -33,6 +33,7 @@ namespace KPIKietHong.Controllers
                 string apik = "values/TieuChi";
                 var a = await dtt.GetList(apik);
                 ViewBag.Count = a.Count();
+
                 DataContext<Tbltonkholoi> tkl = new DataContext<Tbltonkholoi>();
                 string apik1 = "values/TonKhoLoi";
                 var b = await tkl.GetList(apik1);

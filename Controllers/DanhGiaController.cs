@@ -79,6 +79,7 @@ namespace KPIKietHong.Controllers
             {
                var user = Session["userid"] as SessionUser;
                 ViewBag.user = user.Tennhanvien;
+                Session["TenNV"] = user.Tennhanvien;
             }
             // listchinhanh = await GetListChiNhanh();
             return View();

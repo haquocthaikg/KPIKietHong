@@ -1,4 +1,5 @@
-﻿@{ 
+﻿
+@{ 
     if (Session["userid"] == null)
     {
         if (!Response.IsRequestBeingRedirected)
@@ -6,6 +7,7 @@
             Response.Redirect("~/DanhGia/Login");
         }
     }
+    
 }
 
 <!DOCTYPE html>
@@ -156,7 +158,7 @@
                     </li>
                     <!-- /.dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs">Tôn Xuân Long</b> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs">@if (Session["userid"] != null) { @Session["TenNV"].ToString()}</b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
                             <li><a href="javascript:void(0)"><i class="ti-user"></i>  Hồ sơ của bạn</a></li>
                             <li><a href="javascript:void(0)"><i class="ti-email"></i>  Hộp thư đến</a></li>
@@ -188,7 +190,8 @@
                     </li>
                     <li class="user-pro">
                         <a href="#">
-                            @*<img src="../plugins/images/users/d1.jpg" alt="user-img" class="img-circle">*@ <span class="hide-menu">Tôn Xuân Long<span class="fa arrow"></span></span>
+                            @*<img src="../plugins/images/users/d1.jpg" alt="user-img" class="img-circle">*@ <span class="hide-menu">@if (Session["userid"] != null)
+                            { @Session["TenNV"].ToString()}<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li><a href="javascript:void(0)"><i class="ti-user"></i> Hồ sơ của bạn</a></li>
