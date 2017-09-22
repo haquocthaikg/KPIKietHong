@@ -1,0 +1,64 @@
+﻿@model KPIKietHong.Models.Tblloaitieuchi
+
+@{
+    ViewBag.Title = "Thêm Loại tiêu chí - Kiệt Hồng KPI";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Loại Tiêu chí </h4>
+    </div>
+</div>
+<div class="white-box">
+    <h2>Thêm Loại tiêu chí</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Idloaitc, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                @*<div class="col-md-10">
+                    @Html.EditorFor(model => model.Idloaitc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Idloaitc, "", new { @class = "text-danger" })
+                </div>*@
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tenloaitc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tenloaitc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tenloaitc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trangthaitc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Trangthaitc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Trangthaitc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-6 col-md-6">
+                    
+                </div>
+                <input type="submit" value="Lưu dữ liệu" class="btn btn-info" />
+                <input type="reset" value="Xóa" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+    <div>
+        <i class="fa fa-arrow-left"></i><span> @Html.ActionLink("Quay về Loại tiêu chí", "Index","LoaiTieuChi")</span>
+    </div>
+    </div>
+   <script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/validate-custom.js"></script>

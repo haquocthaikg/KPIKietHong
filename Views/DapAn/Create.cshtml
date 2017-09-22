@@ -1,0 +1,77 @@
+﻿@model KPIKietHong.Models.Tbldapan
+
+@{
+    ViewBag.Title = "Thêm đáp án - - KPI Kiệt Hồng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Đáp án cho tiêu chí </h4>
+    </div>
+</div>
+<div class="white-box">
+    <h2>Thêm đáp án</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Tbldapan</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Idtieuchi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Idtieuchi, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.DropDownListFor(model => model.Idtieuchi, ViewBag.listtieuchi as SelectList, "Chọn tiêu chí...", new { @class = "form-control " })
+                    @Html.ValidationMessageFor(model => model.Idtieuchi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tendapan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tendapan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tendapan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Diemdapan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Diemdapan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Diemdapan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trangthaidapan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Trangthaidapan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Trangthaidapan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-6 col-md-6">
+
+                </div>
+                <input type="submit" value="Lưu dữ liệu" class="btn btn-info" />
+                <input type="reset" value="Xóa" class="btn btn-default" />
+
+            </div>
+        </div>
+    }
+
+    <div>
+        <i class="fa fa-arrow-left"></i><span> @Html.ActionLink("Quay về đáp án", "Index", "DapAn")</span>
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/validate-custom.js"></script>

@@ -2835,10 +2835,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
+    <Compile Include="Controllers\DapAnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoaiTieuChiController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhomTieuChiController.cs" />
+    <Compile Include="Controllers\QuanLyChiNhanhController.cs" />
     <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Controllers\TieuChiController.cs" />
     <Compile Include="ExtendCode\MailHelper.cs" />
@@ -3803,6 +3806,14 @@
     <Content Include="Views\DanhGia\Login__.cshtml" />
     <Content Include="Views\DanhGia\Index.cshtml" />
     <Content Include="Views\DanhGia\Login.cshtml" />
+    <Content Include="Views\LoaiTieuChi\Index.cshtml" />
+    <Content Include="Views\LoaiTieuChi\Create.cshtml" />
+    <Content Include="Views\LoaiTieuChi\Edit.cshtml" />
+    <Content Include="Views\DapAn\Index.cshtml" />
+    <Content Include="Views\DapAn\Create.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Index.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Create.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

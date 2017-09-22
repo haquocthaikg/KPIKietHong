@@ -9,6 +9,7 @@ namespace KPIKietHong.Interface
     public interface IDataContext<T>
     {
         Task<IEnumerable<T>> GetList(string api);
+        Task<IEnumerable<T>> GetListBy(int id,string api);
         Task<T> GetList(int id, string api);
         Task<bool> Create(T item, string api);
         Task<bool> Update(int id, T item, string api);

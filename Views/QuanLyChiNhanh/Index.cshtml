@@ -1,0 +1,115 @@
+﻿@model IEnumerable<KPIKietHong.Models.Tblquanlychinhanh>
+
+@{
+    ViewBag.Title = "Quản lý chi nhanh - KPI Kiệt Hồng ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Quản lý chi nhánh</h4>
+    </div>
+</div>
+<div class="white-box">
+    <div class="button-box">
+        <form action="~/QuanLyChiNhanh/Create">
+            <input type="submit" value="Thêm mới" class="btn btn-info btn-filter" />
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="editable-datatable">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Iduser)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Idchinhanh)
+                       
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Trangthaiquanly)
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Iduser)*@
+                            @*@Html.DropDownListFor(m => item.Iduser, new SelectList(ViewBag.listnv, "Iduser", "Tennhanvien", item.Iduser), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })*@
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => item.Iduser, new SelectList(ViewBag.listnv, "Iduser", "Tennhanvien", item.Iduser), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Idchinhanh)*@
+                            @Html.DropDownListFor(m => item.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", item.Idchinhanh), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
+                        </td>
+                        <td>
+                          
+                            @if (@item.Trangthaiquanly.ToString() == "True")
+                            {
+                                <span class="label label-info">Không khóa</span>
+                            }
+                            else
+                            {
+                                <span class="label label-red">Khóa</span>
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Sửa" href="@Url.Action("Edit","QuanLyChiNhanh", new { Iduser = item.Iduser, Idchinhanh =item.Idchinhanh}) ">
+                                <em class="fa fa-pencil"></em>
+                            </a>
+                            @Html.HiddenFor(x => item.Iduser)
+                            @Html.HiddenFor(x => item.Idchinhanh)
+                            <a class="btn btn-danger saveButton" data-toggle="tooltip" data-placement="top" title="Xóa" onclick="return false;"><em class="fa fa-trash"></em></a>
+                        </td>
+                    </tr>
+                }
+
+        </table>
+    </div>
+    </div>
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"])
+}
+<script type="text/javascript">
+
+    $('.saveButton').on('click', function () {
+        if (confirm("Are you sure?")) {
+            var tr = $(this).parents('td');
+            var ID = tr.find("input[name='item.Iduser']").val();
+            var ID1 = tr.find("input[name='item.Idchinhanh']").val();
+            var UserModel =
+                {
+                    "Iduser": ID,
+                    "Idchinhanh": ID1,
+                    "Trangthaiquanly": null
+                };
+
+            $.ajax({
+                url: '/QuanLyChiNhanh/Delete',
+                data: JSON.stringify(UserModel),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert("Xóa thành công")
+                    window.location.href = window.location.href;
+                }
+
+            });
+        }
+
+    });
+
+</script>
