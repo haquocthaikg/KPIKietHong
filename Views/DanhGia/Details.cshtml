@@ -1,0 +1,59 @@
+﻿@using KPIKietHong.Models
+@model List<Group<Danhgia, string>>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id Danh giá</th>
+            <th>Id Tieu chí</th>
+            <th>Id Đáp án</th>
+            <th>Điểm</th>
+            <th>Ngày đánh giá</th>
+            <th>User</th>
+            <th>Ghi chú</th>
+            <th>Nội dung</th>
+            <th>Trạng thái</th>
+            <th>Tên Tiêu chí</th>
+            <th>Id Chi nhánh</th>
+            <th>Tên Chi nhánh</th>
+            <th>Nhóm tiêu chí</th>
+            <th>Tên nhóm</th>
+            <th>Id Loại</th>
+            <th>Tên Loại</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var group in Model)
+        {
+            <tr><th>@group.Key</th></tr>
+            foreach(var dg in group.Values)
+            {
+                <tr>
+                    <td>@dg.Iddanhgia</td>
+                    <td>@dg.Idtieuchi</td>
+                    <td>@dg.Iddapan</td>
+                    <td>@dg.Diemdanhgia</td>
+                    <td>@dg.Ngaydanhgia</td>
+                    <td>@dg.Iduser</td>
+                    <td>@dg.Ghichu</td>
+                    <td>@dg.Noidungdanhgia</td>
+                    <td>@dg.Trangthaidanhgia</td>
+                    <td>@dg.Tentieuchi</td>
+                    <td>@dg.Idchinhanh</td>
+                    <td>@dg.Tenchinhanh</td>
+                    <td>@dg.Idnhomtieuchi</td>
+                    <td>@dg.Tennhomtieuchi</td>
+                    <td>@dg.Idloaitc</td>
+                    <td>@dg.Tenloaitc</td>
+                   
+                </tr>
+            }
+        }
+    </tbody>
+</table>

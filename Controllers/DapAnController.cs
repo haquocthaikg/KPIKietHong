@@ -12,7 +12,7 @@ namespace KPIKietHong.Controllers
     public class DapAnController : Controller
     {
         // GET: DapAn
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? value)
         {
             if (Session["userid"] == null)
             {
@@ -40,7 +40,23 @@ namespace KPIKietHong.Controllers
                         }
                     }
                 }
-                ViewBag.listcn = listchinhanh;
+                ViewBag.listcn = listchinhanh; //new SelectList(listchinhanh, "idchinhanh", "tenchinhanh");
+               
+                if (value != null)
+                {
+                    ViewBag.indexlistcn = value.Value;
+                   
+                }
+                else
+                {
+                    ViewBag.indexlistcn = listchinhanh?.Count > 0 ? listchinhanh.FirstOrDefault().Idchinhanh : 0;
+                }
+                 
+                ViewBag.listdapancn = await GetTCList1(ViewBag.indexlistcn);
+                DataContext<Tbltieuchi> datatc = new DataContext<Tbltieuchi>();
+                string apitc = "values/TieuChiByChiNhanh";
+                var a = await datatc.GetListBy(ViewBag.indexlistcn, apitc);//lay ds tc
+                ViewBag.listtcbycn = a;
                 return View();
 
             }
@@ -62,31 +78,61 @@ namespace KPIKietHong.Controllers
 
                 }
             }
-           
-            
             return Json(listda, JsonRequestBehavior.AllowGet);
+        }
+        public async Task<List<Tbldapan>> GetTCList1(int Idchinhanh)
+        {
+            DataContext<Tbltieuchi> datatc = new DataContext<Tbltieuchi>();
+            string apitc = "values/TieuChiByChiNhanh";
+            var a = await datatc.GetListBy(Idchinhanh, apitc);//lay ds tc
+            List<Tbldapan> listda = new List<Tbldapan>();
+            DataContext<Tbldapan> dtt = new DataContext<Tbldapan>();
+            string apik = "values/DapAnByTC";
+            if (a.Count() > 0)
+            {
+                foreach (var item in a.OrderBy(p => p.Idnhomtieuchi))//chay ds tc lay dap an
+                {
+                    var listdatemp = await dtt.GetListBy(item.Idtieuchi, apik);
+                    listda.AddRange(listdatemp);
+
+                }
+            }
+            return listda;
         }
         // GET: DapAn/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
-
+        [HttpPost]
         // GET: DapAn/Create
-        public async Task<ActionResult> Create()
+        public async Task<ActionResult> Create([Bind(Include = "Idchinhanh")]int? Idchinhanh)
         {
-            var user = Session["userid"] as SessionUser;
-            DataContext<Tbltieuchi> data = new DataContext<Tbltieuchi>();
-            string api = "values/TieuChiByChiNhanh";
-            var a = await data.GetListBy(user.Idchinhanh.Value,api);
-            ViewBag.listtieuchi = new SelectList(a, "idtieuchi", "tentieuchi");
-            return View();
+            //lay ds tieu chi cua chi nhanh
+            // la loai
+            //var user = Session["userid"] as SessionUser;
+            if (Idchinhanh != null)
+            {
+                DataContext<Tbltieuchi> data = new DataContext<Tbltieuchi>();
+                string api = "values/TieuChiByChiNhanh";
+                var a = await data.GetListBy(Idchinhanh.Value, api);
+                ViewBag.listtieuchi = new SelectList(a, "idtieuchi", "tentieuchi");
+                DataContext<Tblchinhanh> datacn = new DataContext<Tblchinhanh>();
+                string apicn = "values";
+                var cn = await datacn.GetList(Idchinhanh.Value, apicn);
+                ViewBag.Tencn = "[ " + cn.Tenchinhanh +" ] - ";
+                return View(); //tra ve loi
+            }
+            else
+            {
+                return View(); //tra ve loi
+            }
         }
 
         // POST: DapAn/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Idloaitc,Tenloaitc,Trangthaitc")]Tbldapan item)
+        public async Task<ActionResult> CreateAsync([Bind(Include = "Idtieuchi,Tendapan,Diemdapan,Trangthaidapan")]Tbldapan item)
         {
             DataContext<Tbldapan> data = new DataContext<Tbldapan>();
             string api = "values/DapAn";
@@ -103,27 +149,56 @@ namespace KPIKietHong.Controllers
                 {
                     TempData["msg"] = "<script>alert('Thao tác không thực hiện');</script>";
                 }
-                return RedirectToAction("Index", "LoaiTieuChi");
+                
             }
-            var listchinhanh = await data.GetList(api);
-            return View(listchinhanh);
+            return RedirectToAction("Index", "DapAn");
+            //var listchinhanh = await data.GetList(api);
+            //return View(listchinhanh);
         }
 
         // GET: DapAn/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            DataContext<Tbldapan> datada = new DataContext<Tbldapan>();
+            string apida = "values/DapAn";
+            var da = await datada.GetList(id, apida);
+
+            DataContext<Tbltieuchi> data = new DataContext<Tbltieuchi>();
+            string api = "values/TieuChi";
+            var a = await data.GetList(api);
+            ViewBag.listtieuchi = new SelectList(a.Where(p=>p.Idtieuchi==da.Idtieuchi), "idtieuchi", "tentieuchi");
+           
+            //ViewBag.listtieuchi = new SelectList(a, "idtieuchi", "tentieuchi");
+            return View(da);
         }
 
         // POST: DapAn/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, [Bind(Include = "Iddapan,Idtieuchi,Tendapan,Diemdapan,Trangthaidapan")]Tbldapan item)
         {
             try
             {
-                // TODO: Add update logic here
+                DataContext<Tbldapan> datada = new DataContext<Tbldapan>();
+                string apida = "values/DapAn";
+              if (ModelState.IsValid)
+                {
+                   
+                    var test = await datada.Update(id, item, apida);
+                    if (test)
+                    {
+                        TempData["msg"] = "<script>alert('Cập nhật dữ liệu thành công');</script>";
 
-                return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["msg"] = "<script>alert('Dữ liệu đã thay đổi, cập nhật không thành công');</script>";
+
+                    }
+                    return RedirectToAction("Index","DapAn");
+                }
+                var listTieuChi = await datada.GetList(apida);
+                return View(listTieuChi);
             }
             catch
             {
@@ -139,13 +214,29 @@ namespace KPIKietHong.Controllers
 
         // POST: DapAn/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete([Bind(Include = "Idtieuchi")]System.Int32? Iddapan)
         {
             try
             {
-                // TODO: Add delete logic here
+                DataContext<Tbldapan> datada = new DataContext<Tbldapan>();
+                string apida = "values/DapAn";
+                var model = Iddapan;
+                if (Iddapan != null)
+                {
+                    try
+                    {
+                        var test = await datada.Delete(Iddapan, apida);
+                      
+                        return RedirectToAction("Index", "DapAn");
+                    }
+                    catch (Exception e)
+                    {
+                        TempData["msg"] = e.Message;
+                    }
+                }
 
-                return RedirectToAction("Index");
+                var listTieuChi = await datada.GetList(apida);
+                return View(listTieuChi);
             }
             catch
             {

@@ -23,13 +23,13 @@ namespace KPIKietHong.Controllers
         {
             return View();
         }
-        private readonly string UrlApi = ConfigurationManager.ConnectionStrings["ApiConnection"].ToString();
+       
         public async Task<JsonResult> CheckEmail(string Email)
         {
             bool result = true;
             DataContext<Tblnhanvien> dataNhanVien = new DataContext<Tblnhanvien>();
             string apinv = "values/NhanVien";
-            var a = await dataNhanVien.GetList(apinv);
+            var a = await GetList(apinv);
             var email = a.Where(x => x.Email == Email).FirstOrDefault();
 
             if (email != null)
@@ -44,7 +44,7 @@ namespace KPIKietHong.Controllers
             bool result = true;
             DataContext<Tblnhanvien> dataNhanVien = new DataContext<Tblnhanvien>();
             string apinv = "values/NhanVien";
-            var a = await dataNhanVien.GetList(apinv);
+            var a = await GetList(apinv);
             var email = a.Where(x => x.Username == UserName).FirstOrDefault();
 
             if (email != null)
@@ -89,23 +89,7 @@ namespace KPIKietHong.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public async Task<IEnumerable<Tblnhanvien>> GetList(string api)
-        {
-            IEnumerable<Tblnhanvien> product = null;
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(UrlApi);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("token", "getallnhanvien");
-                HttpResponseMessage response = await client.GetAsync(api);
-                if (response.IsSuccessStatusCode)
-                {
-                    product = response.Content.ReadAsAsync<IEnumerable<Tblnhanvien>>().Result;
-                }
-            }
-            return product;
-        }
+     
 
 
     }

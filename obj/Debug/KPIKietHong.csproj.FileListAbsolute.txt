@@ -61,7 +61,7 @@ C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\bin\System.Web.Webpages.Deplo
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\bin\System.Web.Webpages.Razor.xml
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\bin\System.Web.Helpers.xml
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\bin\System.Web.Mvc.xml
-C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.csprojResolveAssemblyReference.cache
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.csproj.CoreCompileInputs.cache
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.dll
 C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.pdb
+C:\Users\dc\source\repos\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.csprojResolveAssemblyReference.cache

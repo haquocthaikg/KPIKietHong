@@ -105,7 +105,7 @@ namespace KPIKietHong.Models
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("token", user.Tolken);
-                HttpResponseMessage response = await client.GetAsync($"{api}/{id}");
+                HttpResponseMessage response = await client.GetAsync(api+"/"+id);
                 if (response.IsSuccessStatusCode)
                 {
                     return response.Content.ReadAsAsync<IEnumerable<T>>().Result;

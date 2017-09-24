@@ -14,72 +14,83 @@
 </div>
 <div class="white-box">
     <div class="button-box">
-        <form action="~/DapAn/Create">
-            @*@Html.DropDownListFor(model => model.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", model.Idchinhanh), new { @class = "form-control " })*@
+        <form action="~/DapAn/Create" method="post">
+        Chi nhánh quản lý: 
+            @Html.DropDownListFor(model => model.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", ViewBag.indexlistcn), new { @class = "form-control " , onchange= "window.location.href = '/DapAn?value='+this.value" })
+           
             <input type="submit" value="Thêm mới" class="btn btn-info btn-filter" />
         </form>
     </div>
-
-    @*<div class="table-responsive">
-        <table class="table table-striped table-bordered" id="editable-datatable">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Iddapan)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Idtieuchi)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Tendapan)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Diemdapan)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Trangthaidapan)
-                    </th>
-                    <th></th>
-                </tr>
-                </thead>
-                @foreach (var item in Model)
+    @{
+                    var listdapan = ViewBag.listdapancn as List<KPIKietHong.Models.Tbldapan>;
+                    var temp = new KPIKietHong.Models.Tbldapan();
+                    if (listdapan.Count > 0)
+                    {
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered" id="editable-datatable">
+                    <thead>
+                        <tr>
+                            <th><b>STT</b></th>
+                            @*<th>
+                                @Html.DisplayNameFor(model => temp.Iddapan)
+                            </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => temp.Idtieuchi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => temp.Tendapan)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => temp.Diemdapan)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => temp.Trangthaidapan)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in listdapan)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Iddapan)
-                        </td>
-                        <td>
-                          
+                        <tr>
+                            <td></td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Iddapan)
+                            </td>*@
+                            <td>
 
-                            @Html.DropDownListFor(m => item.Idtieuchi, new SelectList(ViewBag.listtieuchi, "Idtieuchi", "Tentieuchi", item.Idtieuchi), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tendapan)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Diemdapan)
-                        </td>
-                        <td>
-                            
-                            @if (@item.Trangthaidapan.ToString() == "True")
-                            {
-                                <span class="label label-info">Hiển thị</span>
-                            }
-                            else
-                            {
-                                <span class="label label-red">Ẩn</span>
-                            }
-                        </td>
-                        <td class="text-nowrap">
-                            @Html.HiddenFor(x => item.Iddapan)
-                            <a class="btn btn-info" href="@Url.Action("Edit","DapAn", new { id = item.Iddapan })" data-toggle="tooltip" data-original-title="Sửa"> <em class="fa fa-pencil"></em> </a>
-                            <a href="#" data-toggle="tooltip" data-original-title="Xóa" class="btn btn-danger saveButton" onclick="return false;"><em class="fa fa-trash"></em> </a>
-                        </td>
-                    </tr>
-                }
 
-</table>
-            </div>*@
+                                @Html.DropDownListFor(m => item.Idtieuchi, new SelectList(ViewBag.listtcbycn, "Idtieuchi", "Tentieuchi", item.Idtieuchi), new { @class = "btn btn-secondary btn-sm dropdown-toggle", disabled = "disabled" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tendapan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Diemdapan)
+                            </td>
+                            <td>
+
+                                @if (@item.Trangthaidapan.ToString() == "True")
+                                {
+                                    <span class="label label-info">Hiển thị</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-red">Ẩn</span>
+        }
+                            </td>
+                            <td class="text-nowrap">
+                                @Html.HiddenFor(x => item.Iddapan)
+                                <a class="btn btn-info" href="@Url.Action("Edit","DapAn", new { id = item.Iddapan })" data-toggle="tooltip" data-original-title="Sửa"> <em class="fa fa-pencil"></em> </a>
+                                <a href="#" data-toggle="tooltip" data-original-title="Xóa" class="btn btn-danger saveButton" onclick="return false;"><em class="fa fa-trash"></em> </a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        }
+    }
+   @**@
     </div>
 
 @if (TempData["msg"] != null)

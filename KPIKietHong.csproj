@@ -2834,6 +2834,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChamKPIController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\DapAnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2851,8 +2852,11 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
+    <Compile Include="Models\BoKPI.cs" />
     <Compile Include="Models\CheckEmail.cs" />
+    <Compile Include="Models\Danhgia.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\HeThong.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -2869,6 +2873,7 @@
     <Compile Include="Models\Tblquyenuser.cs" />
     <Compile Include="Models\Tbltieuchi.cs" />
     <Compile Include="Models\Tbltonkholoi.cs" />
+    <Compile Include="Models\TieuChiTonKhoLoiCN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3802,7 +3807,6 @@
     <Content Include="Views\NhomTieuChi\NhomTieuChiCreate.cshtml" />
     <Content Include="Views\NhomTieuChi\NhomTieuChiEdit.cshtml" />
     <Content Include="Views\DanhGia\DanhGiaAsync.cshtml" />
-    <Content Include="Views\DanhGia\DanhGiaCreate.cshtml" />
     <Content Include="Views\DanhGia\Login__.cshtml" />
     <Content Include="Views\DanhGia\Index.cshtml" />
     <Content Include="Views\DanhGia\Login.cshtml" />
@@ -3814,6 +3818,10 @@
     <Content Include="Views\QuanLyChiNhanh\Index.cshtml" />
     <Content Include="Views\QuanLyChiNhanh\Create.cshtml" />
     <Content Include="Views\QuanLyChiNhanh\Edit.cshtml" />
+    <Content Include="Views\DapAn\Edit.cshtml" />
+    <Content Include="Views\DanhGia\Details.cshtml" />
+    <Content Include="Views\ChamKPI\Index.cshtml" />
+    <Content Include="Views\ChamKPI\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
