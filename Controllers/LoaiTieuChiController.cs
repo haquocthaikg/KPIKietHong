@@ -19,6 +19,8 @@ namespace KPIKietHong.Controllers
         {
             data = new DataContext<Tblloaitieuchi>();
             api = "values/LoaiTieuChi";
+           
+            
         }
         // GET: LoaiTieuChi
         public ActionResult Index()

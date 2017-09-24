@@ -30,16 +30,19 @@ namespace KPIKietHong.Controllers
 
             user.Password = PassWord;
             var kq = await datanhanvien.Update(user.Iduser, user, api);
-            if(kq)
+
+            if (kq)
             {
-                return Redirect("/Home/Index");
+                ViewBag.Message = "Đổi mật khẩu thành công.";
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 return Redirect("/error/index.html");
             }
 
-
+                 
+            
         }
 
       

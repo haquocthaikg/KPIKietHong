@@ -33,6 +33,8 @@ namespace KPIKietHong.Controllers
                 string apik = "values/TieuChi";
                 var a = await dtt.GetList(apik);
                 ViewBag.Count = a.Count();
+                ViewBag.TieuChiAn = a.Where(x => x.Trangthaitc == false).Count();
+                ViewBag.TieuChiHien = a.Where(x => x.Trangthaitc == true).Count();
 
                 DataContext<Tbltonkholoi> tkl = new DataContext<Tbltonkholoi>();
                 string apik1 = "values/TonKhoLoi";
@@ -40,6 +42,10 @@ namespace KPIKietHong.Controllers
                 tonloi = b.Where(x => x.Daxuly == false).Count();
                 loidaxuly = b.Where(x => x.Daxuly == true).Count();
             }
+
+            ViewBag.SoNguoiTruyCap = HttpContext.Application["DaTruyCap"].ToString();// lấy số người truy cập từ application
+            ViewBag.SoNguoiOnline = HttpContext.Application["DangTruyCap"].ToString();
+
 
             return View();
 

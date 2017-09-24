@@ -195,6 +195,7 @@
     <Content Include="Content\less\icons\weather-icons\less\css\variables-time.css" />
     <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Content\less\spinners.css" />
+    <Content Include="Count_Visited.txt" />
     <Content Include="Global.asax" />
     <Content Include="error\css\style.css" />
     <Content Include="error\favicon.ico" />
@@ -2839,6 +2840,7 @@
     <Content Include="Content\js\validator.js" />
     <Content Include="Content\js\waves.js" />
     <Content Include="Content\js\widget.js" />
+    <Content Include="Scripts\counter-number.js" />
     <Content Include="Scripts\custom-develop.js" />
     <Content Include="Login\fonts\fontawesome-webfont.eot" />
     <Content Include="Login\fonts\fontawesome-webfont.ttf" />
@@ -2881,6 +2883,7 @@
     <Compile Include="Controllers\SendMailController.cs" />
     <Compile Include="Controllers\SuccesfulController.cs" />
     <Compile Include="Controllers\TieuChiController.cs" />
+    <Compile Include="Controllers\TonKhoLoiController.cs" />
     <Compile Include="ExtendCode\Hashing.cs" />
     <Compile Include="ExtendCode\MailHelper.cs" />
     <Compile Include="ExtendCode\MD5En.cs" />
@@ -3863,6 +3866,7 @@
     <Folder Include="plugins\bower_components\footable\old\" />
     <Folder Include="Views\ProfileUser\" />
     <Folder Include="Views\SendMail\" />
+    <Folder Include="Views\TonKhoLoi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
