@@ -11,7 +11,7 @@ namespace KPIKietHong.Controllers
 {
     public class ChamKPIController : Controller
     {
-        // GET: ChamKPI
+        /* GET: ChamKPI*/
         public async Task<ActionResult> Index(int? value)
         {
 
