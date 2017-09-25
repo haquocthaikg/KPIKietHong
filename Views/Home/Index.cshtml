@@ -16,37 +16,35 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<!--row -->
-
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="white-box">
             <div class="row row-in">
-              
-                    <div class="col-lg-3 col-sm-6 row-in-br">
-                        <a href="@Url.Action("TieuChiAsync", "TieuChi")">
-                            <div class="col-in row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <i class="ti-pencil-alt text-info"></i>
-                                    <h5 class="text-muted vb">KPI THỰC THI</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h3 class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.TieuChiHien"></h3>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only"></span> </div>
-                                    </div>
 
-                                    KPI ẩn: <b class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.TieuChiAn"></b><br />
-                                    <b>Tổng KPI:</b> <b class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.Count"></b>
-
-
-                                </div>
+                <div class="col-lg-3 col-sm-6 row-in-br">
+                    <a href="@Url.Action("TieuChiAsync", "TieuChi")">
+                        <div class="col-in row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <i class="ti-pencil-alt text-info"></i>
+                                <h5 class="text-muted vb">KPI THỰC THI</h5>
                             </div>
-                        </a>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h3 class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.TieuChiHien"></h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <span class="sr-only"></span> </div>
+                                </div>
+
+                                KPI ẩn: <b class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.TieuChiAn"></b><br />
+                                <b>Tổng KPI:</b> <b class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.Count"></b>
+
+
+                            </div>
+                        </div>
+                    </a>
                 </div>
-               
+
                 <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
                     <a href="#">
                         <div class="col-in row">
@@ -64,7 +62,8 @@
                             </div>
                         </div>
                     </a>
-            </div>
+                </div>
+
                 <div class="col-lg-3 col-sm-6 row-in-br">
                     <a href="#">
                         <div class="col-in row">
@@ -81,8 +80,9 @@
                                 </div>
                             </div>
                         </div>
-                        </a>
+                    </a>
                 </div>
+
                 <div class="col-lg-3 col-sm-6  b-0">
                     <a href="#">
                         <div class="col-in row">
@@ -100,103 +100,100 @@
                                 <b> Tổng truy cập: </b><b class="timer count-title count-number text-center m-t-15 text-info" data-speed="1500" data-to="@ViewBag.SoNguoiTruyCap"></b>
                             </div>
                         </div>
-                        </a>
+                    </a>
+                </div>
+               </div> 
+            </div>
+            </div>
+</div>
+            <!--row -->
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <h3 class="box-title m-b-0"><b>TỒN KHO LỖI</b></h3>
+                        <p class="text-muted">Tổng hợp tồn kho lỗi các chi nhánh</p>
+                        @*<div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Chi nhánh</th>
+                                            <th>Quy định TB</th>
+                                            <th>Điểm chấm</th>
+                                            <th>Tình trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Cafe 390 Ngô Quyền</td>
+                                            <td>65</td>
+                                            <td><span class="label label-info">60</span></td>
+                                            <td><span class="label label-danger">Chưa đạt</span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Khách sạn Kiệt Hồng</td>
+                                            <td>85</td>
+                                            <td><span class="label label-info">93</span></td>
+                                            <td><span class="label label-success">Xuất sắc</span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Kho sữa Rạch Giá</td>
+                                            <td>80</td>
+                                            <td><span class="label label-info">85</span></td>
+                                            <td><span class="label label-success">Tốt</span> </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>*@
+                        @*@Html.Partial("Index", "TonKhoLoi");*@
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="white-box">
+                        <h3 class="box-title m-b-0"><b>Lịch chấm KPI sắp tới</b></h3>
+                        <p class="text-muted">Đây là lịch chấm dự tính, lịch trình có thể thay đổi</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Chi nhánh</th>
+                                        <th>Ngày chấm gần nhất</th>
+                                        <th>Chấm lần kế tiếp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Cafe 390 Ngô Quyền</td>
+                                        <td>01/09/2017</td>
+                                        <td><span class="text-success  text-semibold"> 15/09/2017</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Khách sạn Kiệt Hồng</td>
+                                        <td>02/09/2017</td>
+                                        <td><span class="text-success  text-semibold">17/09/2017</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Chợ Vĩnh Bảo</td>
+                                        <td>28/08/2017 </td>
+                                        <td><span class="text-success text-semibold"> 14/09/2017</span> </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<!--row -->
-
-
-<div class="row">
-    <div class="col-sm-12">
-        <div class="white-box">
-            <h3 class="box-title m-b-0"><b>TỒN KHO LỖI</b></h3>
-            <p class="text-muted">Tổng hợp tồn kho lỗi các chi nhánh</p>
-            @*<div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Chi nhánh</th>
-                            <th>Quy định TB</th>
-                            <th>Điểm chấm</th>
-                            <th>Tình trạng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Cafe 390 Ngô Quyền</td>
-                            <td>65</td>
-                            <td><span class="label label-info">60</span></td>
-                            <td><span class="label label-danger">Chưa đạt</span> </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Khách sạn Kiệt Hồng</td>
-                            <td>85</td>
-                            <td><span class="label label-info">93</span></td>
-                            <td><span class="label label-success">Xuất sắc</span> </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Kho sữa Rạch Giá</td>
-                            <td>80</td>
-                            <td><span class="label label-info">85</span></td>
-                            <td><span class="label label-success">Tốt</span> </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>*@
-            @Html.Partial("Index", "TonKhoLoi");
-
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="white-box">
-            <h3 class="box-title m-b-0"><b>Lịch chấm KPI sắp tới</b></h3>
-            <p class="text-muted">Đây là lịch chấm dự tính, lịch trình có thể thay đổi</p>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Chi nhánh</th>
-                            <th>Ngày chấm gần nhất</th>
-                            <th>Chấm lần kế tiếp</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Cafe 390 Ngô Quyền</td>
-                            <td>01/09/2017</td>
-                            <td><span class="text-success  text-semibold"> 15/09/2017</span> </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Khách sạn Kiệt Hồng</td>
-                            <td>02/09/2017</td>
-                            <td><span class="text-success  text-semibold">17/09/2017</span> </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Chợ Vĩnh Bảo</td>
-                            <td>28/08/2017 </td>
-                            <td><span class="text-success text-semibold"> 14/09/2017</span> </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.row -->
-<script src="~/Scripts/jquery-3.2.1.min.js"></script>
-<script src="~/Scripts/counter-number.js"></script>
-<!--Counter js -->
-
+            <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+            <script src="~/Scripts/counter-number.js"></script>
+            <!--Counter js -->
