@@ -94,7 +94,7 @@ namespace KPIKietHong.Models
                 }
                 return default(T);
             }
-            //return product;
+            
         }
 
         public async Task<IEnumerable<T>> GetListBy(int id, string api)

@@ -3866,8 +3866,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="plugins\bower_components\etc\" />
     <Folder Include="plugins\bower_components\footable\old\" />
-    <Folder Include="Views\ProfileUser\" />
-    <Folder Include="Views\SendMail\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
