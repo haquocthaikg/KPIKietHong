@@ -67,4 +67,3 @@ D:\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.dll
 D:\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.pdb
 D:\KPI Kiet Hong\KPIKietHong\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\KPI Kiet Hong\KPIKietHong\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
-D:\KPI Kiet Hong\KPIKietHong\obj\Debug\KPIKietHong.csprojResolveAssemblyReference.cache

@@ -11,7 +11,8 @@ namespace KPIKietHong.Controllers
     public class TonKhoLoiController : Controller
     {
         // GET: TonKhoLoi
-        public async Task<ActionResult> Index()
+        [ChildActionOnly]
+        public async Task<PartialViewResult> Index()
         {
             if (Session["userid"] == null)
             {
@@ -21,17 +22,40 @@ namespace KPIKietHong.Controllers
             {
                 DataContext<Tbltonkholoi> data = new DataContext<Tbltonkholoi>();
                 string api = "values/TonKhoLoi";
-                var a = await data.GetList(api);
-                var b = a.Where(x=>x.Daxuly ==false);
+                DataContext<Tbltieuchi> datatieuchi = new DataContext<Tbltieuchi>();
+                string apitc = "values/TieuChi";
 
-                // int pageSize = 8;
-                //  int pageNumber = (page ?? 1);
-                //return View(a.OrderBy(x=>x.Idchinhanh).ToPagedList(pageNumber, pageSize));
-                return View(b);
+                DataContext<Tblchinhanh> datacn = new DataContext<Tblchinhanh>();
+                string apicn = "values"; 
+
+                var tonkholoi = await data.GetList(api);
+                var tieuchi = await datatieuchi.GetList(apitc);
+                var chinhanh = await datacn.GetList(apicn); 
+                
+                var a = from x in tonkholoi
+                        join y in tieuchi on x.Idtieuchi equals y.Idtieuchi
+                        join z in chinhanh on y.Idchinhanh equals z.Idchinhanh
+                        select new TieuChiTonKhoLoiCN
+                        {
+                            Idtonkholoi = x.Idtonkholoi,
+                            Idtieuchi = x.Idtieuchi,
+                            Ngaychamdiem = x.Ngaychamdiem,
+                            Daxuly = x.Daxuly,
+                            Decen = x.Decen,
+                            Tentieuchi = y.Tentieuchi,
+                           Tenchinhanh = z.Tenchinhanh
+                        };
+
+                var b = a.Where(x => x.Daxuly == false);
+                return PartialView(b);
+
+
             }
-           
-            return View();
+
+            return PartialView();
         }
 
+
+       
     }
 }

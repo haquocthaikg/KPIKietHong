@@ -2911,6 +2911,7 @@
     <Compile Include="Models\Tblquyenuser.cs" />
     <Compile Include="Models\Tbltieuchi.cs" />
     <Compile Include="Models\Tbltonkholoi.cs" />
+    <Compile Include="Models\TieuChiTonKhoLoiCN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3853,6 +3854,7 @@
     <Content Include="Views\LoaiTieuChi\LoaiTieuChiAsync.cshtml" />
     <Content Include="Views\Succesful\Index.cshtml" />
     <Content Include="Views\ChangePass\Index.cshtml" />
+    <Content Include="Views\TonKhoLoi\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3866,7 +3868,6 @@
     <Folder Include="plugins\bower_components\footable\old\" />
     <Folder Include="Views\ProfileUser\" />
     <Folder Include="Views\SendMail\" />
-    <Folder Include="Views\TonKhoLoi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

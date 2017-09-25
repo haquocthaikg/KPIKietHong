@@ -1,0 +1,63 @@
+﻿@model IEnumerable<KPIKietHong.Models.TieuChiTonKhoLoiCN>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Idtonkholoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idtieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaychamdiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Daxuly)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Decen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenchinhanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tentieuchi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idtonkholoi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idtieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaychamdiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Daxuly)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Decen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenchinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tentieuchi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
