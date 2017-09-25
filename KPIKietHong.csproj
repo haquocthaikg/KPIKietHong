@@ -2892,9 +2892,14 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
+    <Compile Include="Models\BoKPI.cs" />
     <Compile Include="Models\ChangePass.cs" />
+    <Compile Include="Models\CheckEmail.cs" />
     <Compile Include="Models\CheckEmailForgetPass.cs" />
+    <Compile Include="Models\Danhgia.cs" />
     <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\HeThong.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -3855,6 +3860,14 @@
     <Content Include="Views\Succesful\Index.cshtml" />
     <Content Include="Views\ChangePass\Index.cshtml" />
     <Content Include="Views\TonKhoLoi\Index.cshtml" />
+    <Content Include="Views\ChamKPI\Create.cshtml" />
+    <Content Include="Views\ChamKPI\Index.cshtml" />
+    <Content Include="Views\DapAn\Create.cshtml" />
+    <Content Include="Views\DapAn\Edit.cshtml" />
+    <Content Include="Views\DapAn\Index.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Create.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Edit.cshtml" />
+    <Content Include="Views\QuanLyChiNhanh\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

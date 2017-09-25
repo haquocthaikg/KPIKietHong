@@ -179,12 +179,38 @@ namespace KPIKietHong.Controllers
            
             if (Session["userid"] == null)
             {
-               var user = Session["userid"] as SessionUser;
-                ViewBag.user = user.Tennhanvien;
+
+                return RedirectToAction("Login", "DanhGia");
             }
-            // listchinhanh = await GetListChiNhanh();
-            return View();
-        }//
+            else
+            {
+                var user = Session["userid"] as SessionUser;
+
+                 Session["TenNV"] = user.Tennhanvien;
+
+                DataContext<Tblquanlychinhanh> dtt1 = new DataContext<Tblquanlychinhanh>();
+                string apik1 = "Values/QuanLyChiNhanh";
+
+                var listcn = await dtt1.GetListBy(user.Iduser, apik1);//lay ds cn
+                List<Tblchinhanh> listchinhanh = new List<Tblchinhanh>();
+                if (listcn != null || listcn.Count() > 0)
+                {
+                    DataContext<Tblchinhanh> datacn = new DataContext<Tblchinhanh>();
+                    string apikcn = "values";
+                    foreach (var cn in listcn.Where(c => c.Trangthaiquanly == true))
+                    {
+                        var item = await datacn.GetList(cn.Idchinhanh, apikcn);
+                        if (item != null)
+                        {
+                            listchinhanh.Add(item);
+                        }
+                    }
+                }
+                ViewBag.listcn = listchinhanh; //new SelectList(listchinhanh, "idchinhanh", "tenchinhanh");
+
+                if (value != null)
+                {
+                    ViewBag.indexlistcn = value.Value;
 
                 }
                 else

@@ -44,9 +44,7 @@ namespace KPIKietHong.Controllers
                 return View();
             }
 
-            return View();
-
-           
+        
         }
        
         static IEnumerable<Tblchinhanh> listchinhanh = null;
