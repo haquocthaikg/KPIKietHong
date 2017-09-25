@@ -97,6 +97,23 @@ namespace KPIKietHong.Models
             //return product;
         }
 
+        public async Task<IEnumerable<T>> GetListBy(int id, string api)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(UrlApi);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
+                HttpResponseMessage response = await client.GetAsync(api+"/"+id);
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                }
+                return default(IEnumerable<T>);
+            }
+        }
+
         public async Task<bool> Update(int id, T item, string api)
         {
             bool check = true;

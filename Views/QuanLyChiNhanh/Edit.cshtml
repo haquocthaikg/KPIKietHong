@@ -1,0 +1,63 @@
+﻿@model KPIKietHong.Models.Tblquanlychinhanh
+
+@{
+    ViewBag.Title = "Sửa thông tin quản lý chi nhánh - KPI Kiệt Hồng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">thông tin quản lý chi nhánh </h4>
+    </div>
+</div>
+<div class="white-box">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Iduser)
+
+            @Html.HiddenFor(model => model.Idchinhanh)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Iduser, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Iduser, new SelectList(ViewBag.listnv, "Iduser", "Tennhanvien", Model.Iduser), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.Iduser, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Idchinhanh, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", Model.Idchinhanh), new { @class = "btn btn-info dropdown-toggle waves-effect waves-light", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.Idchinhanh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Trangthaiquanly, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Trangthaiquanly, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Trangthaiquanly, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <i class="fa fa-arrow-left"></i><span> @Html.ActionLink("Quay về quản lý chi nhánh", "Index", "QuanLyChiNhanh")</span>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -23,13 +23,13 @@ namespace KPIKietHong.Controllers
         {
             return View();
         }
-
+       
         public async Task<JsonResult> CheckEmail(string Email)
         {
             bool result = true;
             DataContext<Tblnhanvien> dataNhanVien = new DataContext<Tblnhanvien>();
             string apinv = "values/NhanVien";
-            var a = await dataNhanVien.GetList(apinv);
+            var a = await GetList(apinv);
             var email = a.Where(x => x.Email == Email).FirstOrDefault();
 
             if (email != null)
@@ -44,7 +44,7 @@ namespace KPIKietHong.Controllers
             bool result = true;
             DataContext<Tblnhanvien> dataNhanVien = new DataContext<Tblnhanvien>();
             string apinv = "values/NhanVien";
-            var a = await dataNhanVien.GetList(apinv);
+            var a = await GetList(apinv);
             var email = a.Where(x => x.Username == UserName).FirstOrDefault();
 
             if (email != null)
@@ -56,21 +56,6 @@ namespace KPIKietHong.Controllers
 
 
         //Kiểm tra mail khi quên mật khẩu
-
-        public async Task<JsonResult> CheckEmailForgetPass(string Email)
-        {
-            bool result = false;
-           
-            string apinv = "values/NhanVien";
-            var a = await GetList(apinv);
-            var email = a.Where(x => x.Email == Email).FirstOrDefault();
-
-            if (email != null)
-                result = true;
-
-            // return JsonType(result, JsonRequestBehavior.AllowGet);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
 
         public async Task<IEnumerable<Tblnhanvien>> GetList(string api)
         {
@@ -89,6 +74,22 @@ namespace KPIKietHong.Controllers
             }
             return product;
         }
+        public async Task<JsonResult> CheckEmailForgetPass(string Email)
+        {
+            bool result = false;
+         
+            string apinv = "values/NhanVien";
+            var a = await GetList(apinv);
+            var email = a.Where(x => x.Email == Email).FirstOrDefault();
+
+            if (email != null)
+                result = true;
+
+            // return JsonType(result, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+     
 
         public ActionResult LogOut()
         {

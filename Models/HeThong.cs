@@ -7,12 +7,14 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Configuration;
+using KPI.Models;
 
 namespace KPIKietHong.Models
 {
     public class HeThong<T>: IHeThong<T>
     {
         private readonly string UrlApi = ConfigurationManager.ConnectionStrings["ApiConnection"].ToString();
+        private readonly SessionUser user = (SessionUser)System.Web.HttpContext.Current.Session["userid"];
         public async Task<bool> Create(T item, string api)
         {
             bool check = true;
@@ -21,6 +23,7 @@ namespace KPIKietHong.Models
                 client.BaseAddress = new Uri(UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
                 HttpResponseMessage response = await client.PostAsJsonAsync(api, item);
                 if (response.IsSuccessStatusCode)
                 {
@@ -46,6 +49,7 @@ namespace KPIKietHong.Models
                 client.BaseAddress = new Uri(UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
                 HttpResponseMessage response = await client.DeleteAsync($"{api}/{param}/{param1}");
                 if (!response.IsSuccessStatusCode)
                 {
@@ -63,6 +67,7 @@ namespace KPIKietHong.Models
                 client.BaseAddress = new Uri(UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
                 HttpResponseMessage response = await client.GetAsync(api);
                 if (response.IsSuccessStatusCode)
                 {
@@ -80,6 +85,7 @@ namespace KPIKietHong.Models
                 client.BaseAddress = new Uri(UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
                 HttpResponseMessage response = await client.GetAsync($"{api}/{id}");
                 if (response.IsSuccessStatusCode)
                 {
@@ -98,6 +104,7 @@ namespace KPIKietHong.Models
                 client.BaseAddress = new Uri(UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("token", user.Tolken);
                 HttpResponseMessage response = await client.PutAsJsonAsync($"{api}", item);
                 if (!response.IsSuccessStatusCode)
                 {

@@ -25,7 +25,7 @@ namespace KPIKietHong.Controllers
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("~/DanhGia/Login");
+                return RedirectToAction("Login", "DanhGia");
             }
             else
             {
@@ -41,11 +41,8 @@ namespace KPIKietHong.Controllers
                 var b = await tkl.GetList(apik1);
                 tonloi = b.Where(x => x.Daxuly == false).Count();
                 loidaxuly = b.Where(x => x.Daxuly == true).Count();
+                return View();
             }
-
-            ViewBag.SoNguoiTruyCap = HttpContext.Application["DaTruyCap"].ToString();// lấy số người truy cập từ application
-            ViewBag.SoNguoiOnline = HttpContext.Application["DangTruyCap"].ToString();
-
 
             return View();
 
@@ -57,7 +54,7 @@ namespace KPIKietHong.Controllers
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("~/DanhGia/Login");
+               return RedirectToAction("Login","DanhGia");
             }
             else
             {
@@ -71,7 +68,7 @@ namespace KPIKietHong.Controllers
                 //return View(a.OrderBy(x=>x.Idchinhanh).ToPagedList(pageNumber, pageSize));
                 return View(a);
             }
-           return View();
+            
         }
         
         public async Task<ActionResult> ChiNhanhDetails(int id)

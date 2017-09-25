@@ -1,0 +1,31 @@
+﻿@model KPIKietHong.Models.Tblquanlychinhanh
+@{
+    ViewBag.Title = "Chấm điểm KPI";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Danh sách các đợt chấm KPI</h4>
+    </div>
+</div>
+<div class="white-box">
+    <div class="button-box">
+        <form action="~/ChamKPI/Create" method="post">
+            Chi nhánh quản lý:
+            @Html.DropDownListFor(model => model.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", ViewBag.indexlistcn), new { @class = "form-control ", onchange = "window.location.href = '/DanhGia/DanhGiaAsync?value='+this.value" })
+
+            <input type="submit" value="Chấm KPI" class="btn btn-info btn-filter" />
+        </form>
+    </div>
+
+  
+
+</div>
+
+@if (TempData["msg"] != null)
+{
+    @Html.Raw(TempData["msg"])
+}
