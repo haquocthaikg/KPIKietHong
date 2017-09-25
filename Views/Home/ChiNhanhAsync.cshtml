@@ -85,10 +85,7 @@
             
             @*@Html.PagedListPager(Model, page => Url.Action("ChiNhanhAsync", new { page }))
             @Model.Count()*@      
-    @if (TempData["msg"] != null)
-    {
-        @Html.Raw(TempData["msg"])
-    }
+  
 
     <script type="text/javascript">
    

@@ -11,8 +11,13 @@ namespace KPIKietHong.Controllers
 {
     public class LoaiTieuChiController : Controller
     {
-
-       
+        private readonly DataContext<Tblloaitieuchi> data;
+        private readonly string api;
+        public LoaiTieuChiController()
+        {
+            data = new DataContext<Tblloaitieuchi>();
+            api = "values/LoaiTieuChi";
+        }
         // GET: LoaiTieuChi
         public async Task<ActionResult> Index()
         {

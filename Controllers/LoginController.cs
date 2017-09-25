@@ -91,6 +91,13 @@ namespace KPIKietHong.Controllers
 
      
 
+        public ActionResult LogOut()
+        {
+           
+            Session.Abandon();
+            return RedirectToAction("Login", "DanhGia");
+        }
+
 
     }
 }

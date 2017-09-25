@@ -33,6 +33,9 @@ namespace KPIKietHong.Controllers
                 string apik = "values/TieuChi";
                 var a = await dtt.GetList(apik);
                 ViewBag.Count = a.Count();
+                ViewBag.TieuChiAn = a.Where(x => x.Trangthaitc == false).Count();
+                ViewBag.TieuChiHien = a.Where(x => x.Trangthaitc == true).Count();
+
                 DataContext<Tbltonkholoi> tkl = new DataContext<Tbltonkholoi>();
                 string apik1 = "values/TonKhoLoi";
                 var b = await tkl.GetList(apik1);
@@ -41,7 +44,7 @@ namespace KPIKietHong.Controllers
                 return View();
             }
 
-         
+            return View();
 
            
         }

@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Thay đổi mật khẩu thành công</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">
+
+    <link href="~/Content/css/custom-develop.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+        <div id="wrapper">
+            <!-- Icons source http://dribbble.com/shots/913555-Flat-Web-Elements -->
+            <div class="notify successbox">
+                <h1>Thành công!</h1>
+                <span class="alerticon"><img src="~/plugins/images/check.png" alt="checkmark" /></span>
+                <p><b>Cảm ơn bạn đã gửi yêu cầu.</b><br />
+                Hướng dẫn khôi phục mật khẩu cho bạn đã được tạo. Xin kiểm tra Email của bạn.</p>
+                <a class="btn btn-info btn-block" href="@Url.Action("Login","DanhGia")">Đăng nhập</a>
+            </div>
+
+           
+
+
+        </div><!-- end #content -->
+   
+</body>
+</html>

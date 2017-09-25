@@ -18,85 +18,77 @@
             Chi nhánh quản lý:
             @Html.DropDownListFor(model => model.Idchinhanh, new SelectList(ViewBag.listcn, "Idchinhanh", "Tenchinhanh", ViewBag.indexlistcn), new { @class = "form-control ", onchange = "window.location.href = '/DanhGia/DanhGiaAsync?value='+this.value" })
 
-            <input type="submit" value="Tạo bộ chấm KPI" class="btn btn-info btn-filter" />
-        </form>
-    </div>
-    
-@{
-    var listbokpi = ViewBag.bokpi as List<KPIKietHong.Models.BoKPI>;
-    var temp = new KPIKietHong.Models.BoKPI();
-    if (listbokpi.Count > 0)
-    {
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered" id="editable-datatable">
-                <thead>
-                    <tr>
-                        <th><b>STT</b></th>
-                        @*<th>
-                                @Html.DisplayNameFor(model => temp.Iddapan)
-                            </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => temp.NgayDG)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => temp.SoKPI)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => temp.DaCham)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => temp.HoanThanh)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                @foreach (var item in listbokpi)
-                {
-                    <tr>
-                        <td></td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.Iddapan)
-                            </td>*@
-                        <td>
+<p>
+    @Html.ActionLink("Create New", "DanhGiaCreate")
+   @Html.Raw(ViewBag.user)
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Iddanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Idtieuchi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iddapan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diemdanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaydanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iduser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ghichu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Noidungdanhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trangthaidanhgia)
+        </th>
+        <th></th>
+    </tr>
 
-
-                            @Html.DisplayFor(modelItem => item.NgayDG)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SoKPI)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DaCham)
-                        </td>
-                        <td>
-
-                            @if (@item.HoanThanh.ToString() == "True")
-                            {
-                                <span class="label label-info">Hoàn thành</span>
-                            }
-                            else
-                            {
-                                <span class="label label-red">Chưa hoàn thành</span>
-                            }
-                        </td>
-                        <td class="text-nowrap">
-                            @*<form action="~/DanhGia/Details" method="post">
-                               
-                              
-                                @Html.HiddenFor(x => item.Idchinhanh)
-                                @Html.HiddenFor(x => item.NgayDG)
-                                <input type="submit" value="Xem bộ chấm KPI" class="btn btn-info btn-filter" />*@
-
-                                
-                                <a class="btn btn-info" href="@Url.Action("Details","DanhGia", new { id=item.Idchinhanh, value = item.NgayDG })" data-toggle="tooltip" data-original-title="Xem"> <em class="fa fa-pencil"></em> </a>
-                            @*</form>*@
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iddanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idtieuchi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iddapan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diemdanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaydanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iduser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ghichu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Noidungdanhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trangthaidanhgia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
 }
 
     </div>

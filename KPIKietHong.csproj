@@ -50,6 +50,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.1.0.0-rc2-final\lib\net451\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -192,7 +195,31 @@
     <Content Include="Content\less\icons\weather-icons\less\css\variables-time.css" />
     <Content Include="Content\less\icons\weather-icons\less\css\variables-wind-names.css" />
     <Content Include="Content\less\spinners.css" />
+    <Content Include="Count_Visited.txt" />
     <Content Include="Global.asax" />
+    <Content Include="error\css\style.css" />
+    <Content Include="error\favicon.ico" />
+    <Content Include="error\images\background.jpg" />
+    <Content Include="error\images\fb-a.png" />
+    <Content Include="error\images\fb.png" />
+    <Content Include="error\images\field.png" />
+    <Content Include="error\images\gp-a.png" />
+    <Content Include="error\images\gp.png" />
+    <Content Include="error\images\icon.png" />
+    <Content Include="error\images\light.png" />
+    <Content Include="error\images\lines.png" />
+    <Content Include="error\images\ln-a.png" />
+    <Content Include="error\images\ln.png" />
+    <Content Include="error\images\oh-no.png" />
+    <Content Include="error\images\smoke.png" />
+    <Content Include="error\images\tw-a.png" />
+    <Content Include="error\images\tw.png" />
+    <Content Include="error\images\ufo.png" />
+    <Content Include="error\index.html" />
+    <Content Include="error\js\custom.js" />
+    <Content Include="error\js\html5shiv.js" />
+    <Content Include="error\js\jquery-1.11.3.min.js" />
+    <Content Include="error\js\jquery.placeholder.js" />
     <Content Include="Login\css\font-awesome.css" />
     <Content Include="Login\css\style.css" />
     <Content Include="Login\fonts\fontawesome-webfont.svg" />
@@ -2652,6 +2679,7 @@
     <Content Include="plugins\images\chair2.jpg" />
     <Content Include="plugins\images\chair3.jpg" />
     <Content Include="plugins\images\chair4.jpg" />
+    <Content Include="plugins\images\check.png" />
     <Content Include="plugins\images\docs\resizemenu.jpg" />
     <Content Include="plugins\images\docs\sidebar.jpg" />
     <Content Include="plugins\images\docs\spinner.jpg" />
@@ -2680,6 +2708,7 @@
     <Content Include="plugins\images\heading-title-bg.jpg" />
     <Content Include="plugins\images\headline.png" />
     <Content Include="plugins\images\imac.png" />
+    <Content Include="plugins\images\image.gif" />
     <Content Include="plugins\images\img1.jpg" />
     <Content Include="plugins\images\img2.jpg" />
     <Content Include="plugins\images\img3.jpg" />
@@ -2770,6 +2799,7 @@
     <Content Include="plugins\images\tooltip\tooltip1.svg" />
     <Content Include="plugins\images\tooltip\tooltip2.svg" />
     <Content Include="plugins\images\tooltip\tooltip3.svg" />
+    <Content Include="plugins\images\User-Default.jpg" />
     <Content Include="plugins\images\users\1.jpg" />
     <Content Include="plugins\images\users\2.jpg" />
     <Content Include="plugins\images\users\3.jpg" />
@@ -2810,12 +2840,20 @@
     <Content Include="Content\js\validator.js" />
     <Content Include="Content\js\waves.js" />
     <Content Include="Content\js\widget.js" />
+    <Content Include="Scripts\counter-number.js" />
     <Content Include="Scripts\custom-develop.js" />
     <Content Include="Login\fonts\fontawesome-webfont.eot" />
     <Content Include="Login\fonts\fontawesome-webfont.ttf" />
     <Content Include="Login\fonts\fontawesome-webfont.woff" />
     <Content Include="Login\fonts\fontawesome-webfont.woff2" />
     <Content Include="Login\fonts\FontAwesome.otf" />
+    <Content Include="error\fonts\sansation_bold.eot" />
+    <Content Include="error\fonts\sansation_bold.ttf" />
+    <Content Include="error\fonts\sansation_bold.woff" />
+    <Content Include="error\fonts\sansation_regular.eot" />
+    <Content Include="error\fonts\sansation_regular.ttf" />
+    <Content Include="error\fonts\sansation_regular.woff" />
+    <Content Include="error\images\Thumbs.db" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -2834,7 +2872,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ChamKPIController.cs" />
     <Compile Include="Controllers\DanhGiaController.cs" />
     <Compile Include="Controllers\DapAnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2842,9 +2879,11 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhomTieuChiController.cs" />
-    <Compile Include="Controllers\QuanLyChiNhanhController.cs" />
     <Compile Include="Controllers\SendMailController.cs" />
+    <Compile Include="Controllers\SuccesfulController.cs" />
     <Compile Include="Controllers\TieuChiController.cs" />
+    <Compile Include="Controllers\TonKhoLoiController.cs" />
+    <Compile Include="ExtendCode\Hashing.cs" />
     <Compile Include="ExtendCode\MailHelper.cs" />
     <Compile Include="ExtendCode\MD5En.cs" />
     <Compile Include="Global.asax.cs">
@@ -2852,9 +2891,7 @@
     </Compile>
     <Compile Include="Interface\IDataContext.cs" />
     <Compile Include="Interface\IHeThong.cs" />
-    <Compile Include="Models\BoKPI.cs" />
-    <Compile Include="Models\CheckEmail.cs" />
-    <Compile Include="Models\Danhgia.cs" />
+    <Compile Include="Models\CheckEmailForgetPass.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\HeThong.cs" />
@@ -3810,18 +3847,9 @@
     <Content Include="Views\DanhGia\Login__.cshtml" />
     <Content Include="Views\DanhGia\Index.cshtml" />
     <Content Include="Views\DanhGia\Login.cshtml" />
-    <Content Include="Views\LoaiTieuChi\Index.cshtml" />
-    <Content Include="Views\LoaiTieuChi\Create.cshtml" />
-    <Content Include="Views\LoaiTieuChi\Edit.cshtml" />
-    <Content Include="Views\DapAn\Index.cshtml" />
-    <Content Include="Views\DapAn\Create.cshtml" />
-    <Content Include="Views\QuanLyChiNhanh\Index.cshtml" />
-    <Content Include="Views\QuanLyChiNhanh\Create.cshtml" />
-    <Content Include="Views\QuanLyChiNhanh\Edit.cshtml" />
-    <Content Include="Views\DapAn\Edit.cshtml" />
-    <Content Include="Views\DanhGia\Details.cshtml" />
-    <Content Include="Views\ChamKPI\Index.cshtml" />
-    <Content Include="Views\ChamKPI\Create.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiCreate.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiEdit.cshtml" />
+    <Content Include="Views\LoaiTieuChi\LoaiTieuChiAsync.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3833,7 +3861,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="plugins\bower_components\etc\" />
     <Folder Include="plugins\bower_components\footable\old\" />
+    <Folder Include="Views\ProfileUser\" />
     <Folder Include="Views\SendMail\" />
+    <Folder Include="Views\TonKhoLoi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
